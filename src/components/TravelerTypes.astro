@@ -1,0 +1,113 @@
+---
+const travelers = [
+  {
+    zh: "首次出行",
+    en: "First-time visitor",
+    desc: "Never ordered Chinese food before? Start with these crowd-pleasers.",
+    dishes: [
+      { name: "Peking Duck", note: "the icon" },
+      { name: "Xiaolongbao", note: "fun to eat" },
+      { name: "Char Siu", note: "sweet and safe" },
+      { name: "Egg Fried Rice", note: "universal" },
+    ],
+  },
+  {
+    zh: "素食",
+    en: "Vegetarian",
+    desc: "Plenty of tofu, greens and rice noodles — just say 'sù shí'.",
+    dishes: [
+      { name: "Stir-Fried Greens", note: "always safe" },
+      { name: "Di San Xian", note: "potato-eggplant-pepper" },
+      { name: "Mapo Tofu", note: "ask without pork" },
+      { name: "Congee", note: "gentle and plain" },
+    ],
+  },
+  {
+    zh: "嗜辣",
+    en: "Spice seeker",
+    desc: "Chase the málà with Sichuan's boldest hits.",
+    dishes: [
+      { name: "Sichuan Hotpot", note: "the real deal" },
+      { name: "Mapo Tofu", note: "numbing classic" },
+      { name: "Kung Pao Chicken", note: "sweet heat" },
+      { name: "Dan Dan Noodles", note: "chili-oil noodles" },
+    ],
+  },
+  {
+    zh: "无麸质",
+    en: "Gluten-free",
+    desc: "Skip noodles and soy sauce — these are naturally safe.",
+    dishes: [
+      { name: "Steamed Fish", note: "ginger and scallion" },
+      { name: "White Cut Chicken", note: "clean poached" },
+      { name: "Congee", note: "rice porridge" },
+      { name: "Har Gow", note: "rice-flour wrapper" },
+    ],
+  },
+  {
+    zh: "家庭带娃",
+    en: "Family with kids",
+    desc: "Mild, familiar and fun to eat — no surprises.",
+    dishes: [
+      { name: "Egg Fried Rice", note: "every kid eats it" },
+      { name: "Sweet and Sour Pork", note: "familiar flavors" },
+      { name: "Wonton Soup", note: "gentle broth" },
+      { name: "Egg Tart", note: "dessert bribe" },
+    ],
+  },
+  {
+    zh: "清真",
+    en: "Halal",
+    desc: "Look for the green 'qīng zhēn' sign, or start with these.",
+    dishes: [
+      { name: "Lamb Skewers", note: "cumin street food" },
+      { name: "Beef Noodle Soup", note: "hand-pulled" },
+      { name: "Roujiamo", note: "halal-friendly burger" },
+    ],
+  },
+];
+---
+
+<section id="travelers" class="border-y border-line bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+    <div class="max-w-2xl">
+      <h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
+        Who are you? Start here.
+      </h2>
+      <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+        Pick the traveler you are and get a short list that works — no menu decoding
+        required.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {travelers.map((traveler) => (
+        <article class="flex flex-col border border-line bg-white p-6">
+          <div class="flex items-baseline gap-3 border-b border-line pb-4">
+            <span class="text-lg font-medium text-accent-600">{traveler.zh}</span>
+            <h3 class="text-lg font-semibold">{traveler.en}</h3>
+          </div>
+          <p class="mt-4 text-sm leading-relaxed text-muted">{traveler.desc}</p>
+          <ul class="mt-4 space-y-2">
+            {traveler.dishes.map((dish) => (
+              <li class="flex items-baseline gap-2 text-sm">
+                <span class="font-medium">{dish.name}</span>
+                <span class="flex-1 border-b border-dotted border-line"></span>
+                <span class="text-right text-xs text-muted">{dish.note}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+
+    <div class="mt-10">
+      <a
+        href="/#explorer"
+        class="inline-flex items-center justify-center bg-ink px-6 py-3.5 text-sm font-medium text-white transition-transform active:scale-[0.98]"
+      >
+        Explore the full menu
+      </a>
+    </div>
+  </div>
+</section>

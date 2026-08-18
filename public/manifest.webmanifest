@@ -1,0 +1,16 @@
+{
+  "name": "Chinese Menu Decoder",
+  "short_name": "ChineseMenu",
+  "description": "Decode a Chinese menu with pictures, pinyin, prices, and a point-to-order card.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f7f8",
+  "theme_color": "#c53f2c",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

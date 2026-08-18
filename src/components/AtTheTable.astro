@@ -1,0 +1,149 @@
+---
+const scenes = [
+  {
+    title: "Point to a picture",
+    text: "Many menus have photos. Point and you are halfway there — no language needed.",
+  },
+  {
+    title: "Scan to order",
+    text: "Most tables have a QR code. Scan with WeChat or Alipay to open a menu with photos and prices.",
+  },
+  {
+    title: "Say what you avoid",
+    text: "Allergies and spice matter. Show the waiter a phrase instead of trying to explain.",
+  },
+  {
+    title: "How many dishes",
+    text: "Order one dish per person, plus one to share. Two people, three dishes. Four people, five.",
+  },
+  {
+    title: "The tea charge",
+    text: "You may be charged a small 'tea fee' (chá wèi fèi) of 2-5 RMB per person — it covers tea, napkins and chopsticks. It is normal, not a scam.",
+  },
+  {
+    title: "Serving chopsticks",
+    text: "Dishes are shared. Many restaurants provide 'gōng kuài' (serving chopsticks) for taking food from shared plates — use them when provided.",
+  },
+  {
+    title: "Getting attention",
+    text: "Raise a hand and call 'fú wù yuán' (waiter), or 'lǎo bǎn' (boss) at small family spots. Staff do not hover because tipping is not expected.",
+  },
+  {
+    title: "Takeaway & the bill",
+    text: "Packing leftovers is normal — say 'dǎ bāo'. For the bill, say 'mǎi dān' or make a writing gesture with your hand.",
+  },
+];
+
+const phrases = [
+  { zh: "我要这个", py: "wǒ yào zhè ge", en: "I'll have this one." },
+  { zh: "不要辣", py: "bú yào là", en: "No spice, please." },
+  { zh: "我是素食者", py: "wǒ shì sù shí zhě", en: "I'm vegetarian." },
+  { zh: "我对花生过敏", py: "wǒ duì huā shēng guò mǐn", en: "I'm allergic to peanuts." },
+  { zh: "买单", py: "mǎi dān", en: "Check, please." },
+  { zh: "很好吃", py: "hěn hǎo chī", en: "It's delicious." },
+];
+
+const words = [
+  { zh: "鸡", en: "chicken" },
+  { zh: "鸭", en: "duck" },
+  { zh: "猪", en: "pork" },
+  { zh: "牛", en: "beef" },
+  { zh: "羊", en: "lamb" },
+  { zh: "鱼", en: "fish" },
+  { zh: "虾", en: "shrimp" },
+  { zh: "蛋", en: "egg" },
+  { zh: "蒸", en: "steamed" },
+  { zh: "炒", en: "stir-fried" },
+  { zh: "煮", en: "boiled" },
+  { zh: "炸", en: "fried" },
+  { zh: "烤", en: "roasted" },
+  { zh: "辣", en: "spicy" },
+  { zh: "麻", en: "numbing" },
+  { zh: "酸", en: "sour" },
+  { zh: "甜", en: "sweet" },
+  { zh: "素", en: "vegetarian" },
+  { zh: "斋", en: "vegan" },
+  { zh: "清真", en: "halal" },
+];
+---
+
+<section id="at-the-table" class="border-y border-line bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+    <div class="max-w-2xl">
+      <h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
+        At the table, without the panic.
+      </h2>
+      <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+        Eight moves, six phrases and a handful of characters are all you need to eat
+        like a regular — from the QR code to the tea charge to the bill.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-px bg-line sm:grid-cols-2 xl:grid-cols-4">
+      {scenes.map((scene, index) => (
+        <div class="bg-white p-6">
+          <span class="text-2xl font-semibold text-accent-600">{String(index + 1).padStart(2, "0")}</span>
+          <h3 class="mt-6 text-lg font-semibold">{scene.title}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted">{scene.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-16 grid gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+      <div>
+        <h3 class="text-xl font-semibold">Say it out loud.</h3>
+        <div class="mt-5 grid gap-3 sm:grid-cols-2">
+          {phrases.map((phrase) => (
+            <button
+              type="button"
+              data-speak={phrase.zh}
+              class="group border border-line bg-paper p-4 text-left transition-colors hover:border-accent-500"
+            >
+              <div class="flex items-start justify-between gap-3">
+                <span class="text-lg font-medium">{phrase.zh}</span>
+                <span
+                  class="inline-flex h-8 w-8 shrink-0 items-center justify-center border border-line bg-white text-muted transition-colors group-hover:bg-accent-600 group-hover:text-white"
+                  aria-hidden="true"
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" class="h-4 w-4">
+                    <path d="M11 5 6 9H2v6h4l5 4V5Z" stroke-linejoin="round"></path>
+                    <path d="M15.5 8.5a5 5 0 0 1 0 7" stroke-linecap="round"></path>
+                    <path d="M18.5 5.5a9.5 9.5 0 0 1 0 13" stroke-linecap="round"></path>
+                  </svg>
+                </span>
+              </div>
+              <p class="mt-2 text-sm font-medium text-accent-600">{phrase.py}</p>
+              <p class="mt-1 text-sm text-muted">{phrase.en}</p>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h3 class="text-xl font-semibold">Read the key characters.</h3>
+        <div class="mt-5 grid grid-cols-4 gap-px bg-line sm:grid-cols-5">
+          {words.map((word) => (
+            <div class="bg-paper p-3 text-center">
+              <span class="block text-xl font-medium">{word.zh}</span>
+              <span class="mt-1 block text-xs text-muted">{word.en}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll<HTMLButtonElement>("[data-speak]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const text = button.getAttribute("data-speak");
+        if (!text || !("speechSynthesis" in window)) return;
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "zh-CN";
+        utterance.rate = 0.85;
+        window.speechSynthesis.speak(utterance);
+      });
+    });
+  </script>
+</section>

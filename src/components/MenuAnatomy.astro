@@ -1,0 +1,141 @@
+---
+const sections = [
+  {
+    zh: "冷菜",
+    en: "Cold dishes",
+    note: "开胃凉菜，先上桌 · Starters, served first",
+    detail:
+      "Cold dishes arrive within minutes because they are pre-made and dressed to order. They open the meal and are always shared family-style. In Sichuan and Yunnan they lean spicy; in the north they are garlicky; in the south they are light.",
+    subs: "凉拌 (liángbàn, tossed cold) · 卤 (lǔ, soy-braised) · 腌 (yān, pickled)",
+    examples: [
+      "Smashed cucumber with garlic — cool, crisp, ready in seconds.",
+      "White Cut Chicken — poached chicken with a ginger-scallion dip.",
+      "Fuqi Feipian — thinly sliced beef offal in chili oil.",
+    ],
+    tip: "Order one cold dish to start while you read the rest of the menu. They are small, cheap, and buy you time.",
+  },
+  {
+    zh: "热菜",
+    en: "Hot dishes",
+    note: "炒·烧·蒸的主菜 · Stir-fried, braised, steamed mains",
+    detail:
+      "This is the heart of the meal. Stir-fried (炒 chǎo), braised (烧 shāo) and steamed (蒸 zhēng) dishes make up most of what you will share. Dishes arrive in sequence as they are cooked, not all at once, and everyone helps themselves from the shared plates.",
+    subs: "炒 (stir-fried) · 烧 (braised) · 蒸 (steamed) · 炸 (deep-fried)",
+    examples: [
+      "Kung Pao Chicken — sweet-sour-savory with peanuts and dried chilies.",
+      "Red-Braised Pork Belly — soy and rock sugar until meltingly tender.",
+      "Steamed Fish — a whole fish with ginger, scallion and hot oil.",
+    ],
+    tip: "Order roughly one hot dish per person, plus one to share. Mix one spicy, one mild, one vegetable.",
+  },
+  {
+    zh: "主食",
+    en: "Staples",
+    note: "饭·面·粉，最后点 · Rice, noodles, buns — order last",
+    detail:
+      "Rice, noodles or buns finish the meal and fill any gaps. The north is wheat country (noodles, dumplings, flatbreads) while the south runs on rice. Staples are cheap, so they are the safest thing to over-order and take away.",
+    subs: "饭 (rice) · 面 (wheat noodles) · 粉 (rice noodles) · 馒头/包子 (buns)",
+    examples: [
+      "Egg Fried Rice — the universal, always-safe staple.",
+      "Dan Dan Noodles — wheat noodles under chili oil and sesame paste.",
+      "Beef Chow Fun — wide rice noodles with smoky wok hei.",
+    ],
+    tip: "Order staples last, after you see how much food is coming. Two people usually need only one.",
+  },
+  {
+    zh: "汤",
+    en: "Soup",
+    note: "汤羹，常配主食 · Broths and thickened soups",
+    detail:
+      "Soup is either a light clear broth to sip through the meal (common in Cantonese cooking) or a substantial peppery bowl of its own. Not every region serves soup, and some 'soups' like hot and sour are really a shared course.",
+    subs: "清汤 (clear broth) · 羹 (thickened soup) · 酸辣 (hot and sour)",
+    examples: [
+      "Wonton Soup — pork-shrimp dumplings in clear chicken broth.",
+      "Hot and Sour Soup — peppery, vinegary, with tofu and egg ribbons.",
+      "Egg Drop Soup — silky ribbons of egg in broth, gentle on the stomach.",
+    ],
+    tip: "In Guangdong, soup arrives first as part of the meal. Elsewhere, one soup shared at the table is plenty.",
+  },
+  {
+    zh: "点心",
+    en: "Dim sum",
+    note: "包子·饺子·点心 · Buns, dumplings, small plates",
+    detail:
+      "Dim sum means 'touch the heart' — small steamed, fried or baked plates. In Cantonese culture it is a brunch ritual ordered by the basket (笼 lóng); elsewhere the same items are street snacks or part of a bigger meal.",
+    subs: "蒸 (steamed) · 煎 (pan-fried) · 炸 (deep-fried) · 甜点 (sweets)",
+    examples: [
+      "Xiaolongbao — soup dumplings; bite a hole, sip, then eat.",
+      "Har Gow — translucent shrimp dumplings, the dim sum benchmark.",
+      "Sheng Jian Bao — pan-fried pork buns with a crispy base.",
+    ],
+    tip: "A basket is usually 3-4 pieces. Order one basket per person for a snack, two for a meal.",
+  },
+  {
+    zh: "饮品",
+    en: "Drinks",
+    note: "茶与冷饮 · Tea and cold drinks",
+    detail:
+      "Tea is usually free, poured on arrival and refilled throughout the meal — tap two fingers on the table to say thanks. Cold drinks like sour plum, soy milk and bubble tea are ordered separately or bought from street stalls.",
+    subs: "茶 (tea) · 酸梅汤 (sour plum) · 豆浆 (soy milk) · 奶茶 (milk tea)",
+    examples: [
+      "Sour Plum Drink — sweet-tart and chilled, the classic summer cooler.",
+      "Soy Milk — sweet or savory, a breakfast staple.",
+      "Bubble Tea — milk tea with chewy tapioca pearls, from Taiwan.",
+    ],
+    tip: "Tap water is not served in most restaurants. Ask for tea (free) or order a bottled drink.",
+  },
+];
+---
+
+<section id="anatomy" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+  <div class="max-w-2xl">
+    <h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
+      Every menu follows the same map.
+    </h2>
+    <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+      Six sections, in the same order, in almost every Chinese restaurant. Learn this once
+      and no menu will ever look like a wall of characters again — expand each section to
+      see what hides inside it.
+    </p>
+  </div>
+
+  <div class="mt-12 border-t border-line">
+    {sections.map((section, index) => (
+      <details class="group border-b border-line py-5" open={index === 0}>
+        <summary class="flex cursor-pointer list-none items-center gap-4">
+          <span class="w-8 shrink-0 text-sm font-semibold text-accent-600">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <span class="text-2xl font-semibold">{section.zh}</span>
+            <span class="text-sm text-muted">{section.en}</span>
+          </div>
+          <span class="hidden text-sm text-muted sm:inline">{section.note}</span>
+          <span class="ml-auto text-2xl font-light text-accent-600 group-open:hidden">+</span>
+          <span class="ml-auto hidden text-2xl font-light text-accent-600 group-open:inline">−</span>
+        </summary>
+
+        <div class="mt-5 grid gap-6 pl-12 lg:grid-cols-[1.2fr_0.8fr]">
+          <div class="space-y-4">
+            <p class="leading-relaxed text-muted">{section.detail}</p>
+            <p class="text-sm text-muted">
+              <span class="font-medium text-ink">Sub-types:</span> {section.subs}
+            </p>
+            <ul class="space-y-2 text-sm text-muted">
+              {section.examples.map((example) => (
+                <li class="flex gap-2">
+                  <span class="text-accent-600">·</span>
+                  <span>{example}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="rounded border border-line bg-paper p-4">
+            <p class="text-sm font-semibold text-accent-600">How to order</p>
+            <p class="mt-2 text-sm leading-relaxed text-muted">{section.tip}</p>
+          </div>
+        </div>
+      </details>
+    ))}
+  </div>
+</section>

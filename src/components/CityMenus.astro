@@ -1,0 +1,177 @@
+---
+import { cities } from "../data/dishes";
+
+const signatureDishes: Record<string, { zh: string; en: string; price: string }[]> = {
+  beijing: [
+    { zh: "北京烤鸭", en: "Peking Duck", price: "¥168-398" },
+    { zh: "炸酱面", en: "Zhajiangmian", price: "¥15-32" },
+    { zh: "酸梅汤", en: "Sour Plum Drink", price: "¥3-8" },
+  ],
+  shanghai: [
+    { zh: "小笼包", en: "Xiaolongbao", price: "¥12-38" },
+    { zh: "生煎包", en: "Sheng Jian Bao", price: "¥10-24" },
+    { zh: "葱油饼", en: "Scallion Pancakes", price: "¥8-20" },
+  ],
+  chengdu: [
+    { zh: "麻婆豆腐", en: "Mapo Tofu", price: "¥18-42" },
+    { zh: "宫保鸡丁", en: "Kung Pao Chicken", price: "¥28-58" },
+    { zh: "担担面", en: "Dan Dan Noodles", price: "¥16-36" },
+  ],
+  xian: [
+    { zh: "肉夹馍", en: "Roujiamo", price: "¥8-20" },
+    { zh: "羊肉串", en: "Lamb Skewers", price: "¥5-12" },
+    { zh: "牛肉面", en: "Beef Noodle Soup", price: "¥22-48" },
+  ],
+  guangzhou: [
+    { zh: "叉烧", en: "Char Siu", price: "¥28-68" },
+    { zh: "虾饺", en: "Har Gow", price: "¥15-32" },
+    { zh: "云吞汤", en: "Wonton Soup", price: "¥18-38" },
+  ],
+  chongqing: [
+    { zh: "火锅", en: "Sichuan Hotpot", price: "¥88-188" },
+    { zh: "酸菜鱼", en: "Suan Cai Yu", price: "¥48-98" },
+    { zh: "毛血旺", en: "Maoxuewang", price: "¥45-88" },
+  ],
+};
+
+const extras: Record<string, { detail: string; order: string; diet: string }> = {
+  beijing: {
+    detail:
+      "Beijing is imperial China on a plate — roast duck carved tableside, wheat noodles with fermented bean paste, and a deep breakfast culture of jianbing crepes and soy milk. Flavors are savory and salty, with northern-style big portions and bold sauces.",
+    order:
+      "Order Peking duck by the half or whole duck and watch the skin crackle as it is carved. Wrap it in thin pancakes with scallion and sweet bean sauce, then snack on the crispy skin dipped in sugar.",
+    diet:
+      "Beijing has a strong halal tradition around Niujie (牛街) and Buddhist vegetarian temples. Say 'sù shí' for vegetarian and 'qīng zhēn' for halal.",
+  },
+  chengdu: {
+    detail:
+      "The capital of Sichuan and a UNESCO City of Gastronomy. The food is all about málà — numbing and hot — but balanced by sweet water noodles, tea houses and slow living. Chengdu is where hot pot meets street snacks.",
+    order:
+      "Try mapo tofu over rice to cut the heat, and only graduate to a full málà hot pot when you are ready for the real thing. Many dishes can be ordered 'wēi là' (mild).",
+    diet:
+      "Vegetarians do well in Chengdu — tofu, vegetable stir-fries and Buddhist 'sù' restaurants are everywhere. Say 'bú yào là' to skip the chili.",
+  },
+  xian: {
+    detail:
+      "Xi'an is the eastern end of the Silk Road, and its food shows it — wheat flatbreads, lamb, cumin and a huge Muslim Quarter that makes it China's halal capital. It is hearty, savory and famously cheap.",
+    order:
+      "Roujiamo (the 'Chinese burger') is the must-eat, best with a bowl of hand-pulled noodles or lamb soup. Eat standing at the stall like a local — that is half the experience.",
+    diet:
+      "The Muslim Quarter is almost entirely halal. Vegetarians can find wheat noodles and vegetable dishes, but lamb dominates the menu.",
+  },
+  shanghai: {
+    detail:
+      "Shanghai's food is sweet and refined — the local 'benbang' cuisine. Soup dumplings (xiaolongbao), pan-fried buns and scallion pancakes are the stars, eaten as a quick snack or a long, elaborate brunch.",
+    order:
+      "For xiaolongbao, bite a small hole, sip the hot broth, then dip in black vinegar with ginger. Never bite a whole one at once — the soup inside is scalding.",
+    diet:
+      "Shanghai cooking uses plenty of pork and sugar. Vegetarians should look for 'sù' restaurants and clearly ask for vegetable-only dishes.",
+  },
+  guangzhou: {
+    detail:
+      "The birthplace of Cantonese cuisine and dim sum. Guangzhou famously 'eats everything that walks, swims or flies', but the classics — char siu, har gow, white cut chicken — are mild, fresh and approachable. Morning dim sum is a ritual.",
+    order:
+      "Go for dim sum before noon: har gow, siu mai, char siu bao and egg tarts. Order tea first, then baskets of three to four pieces each.",
+    diet:
+      "Cantonese food is the most vegetarian- and seafood-friendly. Steamed fish, greens and rice are everywhere; watch for oyster sauce if you are strictly vegan.",
+  },
+  chongqing: {
+    detail:
+      "Chongqing is hot pot's spiritual home — a mountain city where everything swims in chili oil and Sichuan peppercorn. It is the boldest, spiciest food in China, eaten around a bubbling communal pot.",
+    order:
+      "Order a 'yuānyāng' pot — half spicy, half mild — for your first time. Dip cooked food in sesame oil with garlic to cool the burn.",
+    diet:
+      "Hot pot can be made vegetarian with a clear broth and vegetable platters, but the classic experience is meat-heavy. Ask for 'qīng tāng' (clear broth) to avoid spice.",
+  },
+};
+---
+
+<section id="city-menus" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+  <div class="max-w-2xl">
+    <h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
+      Six cities, six signature menus.
+    </h2>
+    <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+      Think of each city as a restaurant with a menu of its own. Order the bold items,
+      and you have tasted the place — plus where to find them, what to budget, and how to
+      order like someone who knows.
+    </p>
+  </div>
+
+  <div class="mt-10 overflow-x-auto border border-line bg-white">
+    <table class="w-full min-w-[640px] text-left text-sm">
+      <thead class="bg-paper text-muted">
+        <tr>
+          <th class="px-4 py-3 font-medium">City</th>
+          <th class="px-4 py-3 font-medium">Best for</th>
+          <th class="px-4 py-3 font-medium">Signature dishes</th>
+          <th class="px-4 py-3 font-medium">Budget</th>
+          <th class="px-4 py-3 font-medium">Days</th>
+        </tr>
+      </thead>
+      <tbody>
+        {cities.map((city) => (
+          <tr class="border-t border-line">
+            <td class="px-4 py-3 font-semibold">{city.english}</td>
+            <td class="px-4 py-3 text-muted">{city.bestFor}</td>
+            <td class="px-4 py-3 text-muted">{city.signature}</td>
+            <td class="px-4 py-3 text-muted">{city.budget}</td>
+            <td class="px-4 py-3 text-muted">{city.days}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+    {cities.map((city) => {
+      const cityDishes = signatureDishes[city.id] ?? [];
+      const extra = extras[city.id];
+      return (
+        <article class="flex flex-col border border-line bg-white p-6">
+          <div class="border-b border-line pb-4">
+            <p class="text-sm text-muted">{city.name}</p>
+            <h3 class="mt-1 text-2xl font-semibold">{city.english}</h3>
+            <p class="mt-2 text-sm text-accent-600">{city.bestFor}</p>
+          </div>
+
+          <div class="mt-4 space-y-3">
+            {cityDishes.map((dish) => (
+              <div class="flex items-baseline gap-2">
+                <span class="font-medium">{dish.en}</span>
+                <span class="text-sm text-muted">{dish.zh}</span>
+                <span class="flex-1 border-b border-dotted border-line"></span>
+                <span class="shrink-0 text-sm font-semibold text-accent-600">{dish.price}</span>
+              </div>
+            ))}
+          </div>
+
+          <div class="mt-5 space-y-1.5 border-t border-line pt-4 text-sm text-muted">
+            <p><span class="font-medium text-ink">Where to eat:</span> {city.foodStreets}</p>
+            <p><span class="font-medium text-ink">How long:</span> {city.days}</p>
+            <p><span class="font-medium text-ink">Budget:</span> {city.budget}</p>
+          </div>
+
+          <details class="group mt-4 border-t border-line pt-4">
+            <summary class="flex cursor-pointer list-none items-center justify-between text-sm font-semibold text-accent-600">
+              What to know before you order
+              <span class="text-xl font-light group-open:hidden">+</span>
+              <span class="hidden text-xl font-light group-open:inline">−</span>
+            </summary>
+            <div class="mt-3 space-y-3 text-sm leading-relaxed text-muted">
+              <p>{extra.detail}</p>
+              <div class="rounded border border-line bg-paper p-3">
+                <p class="font-medium text-ink">How to order</p>
+                <p class="mt-1">{extra.order}</p>
+              </div>
+              <div class="rounded border border-line bg-paper p-3">
+                <p class="font-medium text-ink">Dietary notes</p>
+                <p class="mt-1">{extra.diet}</p>
+              </div>
+            </div>
+          </details>
+        </article>
+      );
+    })}
+  </div>
+</section>

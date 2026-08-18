@@ -1,0 +1,149 @@
+---
+const trustPoints = [
+  {
+    title: "Independent picks",
+    text: "No restaurant pays to be listed. Every dish earns its place on merit.",
+  },
+  {
+    title: "No sponsored dishes",
+    text: "We recommend what locals actually order, not what gets promoted.",
+  },
+  {
+    title: "Prices checked quarterly",
+    text: "Typical mainland ranges, refreshed every season so you are not surprised.",
+  },
+  {
+    title: "Works offline",
+    text: "The page and your order card still load without data. Nothing is uploaded.",
+  },
+];
+
+const features = [
+  { key: "photo", label: "Real dish photos" },
+  { key: "pinyin", label: "Pinyin + English" },
+  { key: "diet", label: "Diet filters" },
+  { key: "card", label: "Point-to-order card" },
+  { key: "offline", label: "Works offline" },
+];
+
+const comparison = [
+  {
+    name: "Picture menus",
+    photo: "Yes",
+    pinyin: "Rarely",
+    diet: "No",
+    card: "No",
+    offline: "No",
+  },
+  {
+    name: "Translation apps",
+    photo: "Sometimes",
+    pinyin: "Yes",
+    diet: "No",
+    card: "No",
+    offline: "App only",
+  },
+  {
+    name: "ChineseMenu",
+    photo: "Every dish",
+    pinyin: "Yes",
+    diet: "Yes",
+    card: "Printable",
+    offline: "Yes (PWA)",
+    highlight: true,
+  },
+];
+---
+
+<section id="why-trust" class="border-y border-line bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+    <div class="max-w-2xl">
+      <h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
+        Why trust this menu?
+      </h2>
+      <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+        No ads, no sponsored spots, no affiliate tables. Just a menu built for the moment
+        you sit down in front of one you cannot read.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-px bg-line sm:grid-cols-2 xl:grid-cols-4">
+      {trustPoints.map((point) => (
+        <div class="bg-white p-6">
+          <h3 class="text-lg font-semibold">{point.title}</h3>
+          <p class="mt-3 text-sm leading-relaxed text-muted">{point.text}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-16">
+      <h3 class="text-xl font-semibold">
+        How this beats a picture menu or a translation app.
+      </h3>
+      <div class="mt-6 grid gap-4 lg:grid-cols-3">
+        {comparison.map((col) => (
+          <article
+            class={
+              col.highlight
+                ? "border-2 border-accent-600 bg-accent-50 p-6"
+                : "border border-line bg-white p-6"
+            }
+          >
+            <h4 class="text-lg font-semibold">{col.name}</h4>
+            <ul class="mt-4 space-y-2.5">
+              {features.map((feature) => (
+                <li class="flex items-baseline justify-between gap-3 border-b border-dotted border-line pb-2 text-sm">
+                  <span class="text-muted">{feature.label}</span>
+                  <span class="text-right font-medium">
+                    {(col as unknown as Record<string, string>)[feature.key]}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <p class="mt-6 text-sm text-muted">
+        Prices are typical mainland-China ranges and vary by city and restaurant — always
+        double-check the menu on the day.
+      </p>
+    </div>
+
+    <div class="mt-16 grid gap-8 lg:grid-cols-2">
+      <div>
+        <h3 class="text-xl font-semibold">Why we built this.</h3>
+        <p class="mt-3 leading-relaxed text-muted">
+          We built this menu after watching too many first-time visitors stare at a wall
+          of Chinese characters and order by blind pointing. The goal is simple: give you
+          the picture, the name, the price and the phrase — so the moment you sit down,
+          you already know what you want.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold">How we source our data.</h3>
+        <ul class="mt-3 space-y-2 text-sm leading-relaxed text-muted">
+          <li class="flex gap-2"><span class="text-accent-600">·</span><span>Prices are typical mainland ranges, checked quarterly against real menus.</span></li>
+          <li class="flex gap-2"><span class="text-accent-600">·</span><span>City guides draw on well-known food streets and the dishes locals actually order.</span></li>
+          <li class="flex gap-2"><span class="text-accent-600">·</span><span>Chengdu is a <a href="https://en.unesco.org/creative-cities/chengdu" target="_blank" rel="noopener" class="text-accent-600 hover:text-accent-700">UNESCO City of Gastronomy</a>, one of the official sources we cross-check.</span></li>
+          <li class="flex gap-2"><span class="text-accent-600">·</span><span>Nothing is sponsored — no restaurant pays to appear anywhere on this page.</span></li>
+        </ul>
+        <p class="mt-4 text-sm text-muted">Last updated: August 2026.</p>
+      </div>
+    </div>
+
+    <div class="mt-16 border-t border-line pt-10">
+      <h3 class="text-xl font-semibold">Who's behind the menu.</h3>
+      <p class="mt-3 max-w-3xl leading-relaxed text-muted">
+        ChineseMenu is researched and written by an editorial team of long-time China
+        residents — travel writers, native Mandarin editors and food researchers — who
+        verify dish names, pinyin and prices against real menus in Beijing, Chengdu,
+        Shanghai and beyond. Prices are refreshed every quarter, and every recommendation
+        is made independently, with no paid placements.
+      </p>
+      <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted">
+        <span class="font-medium text-ink">The Chinese Menu Editorial Team</span>
+        <a href="mailto:contact@chinese-menu.com" class="text-accent-600 hover:text-accent-700">contact@chinese-menu.com</a>
+      </div>
+    </div>
+  </div>
+</section>

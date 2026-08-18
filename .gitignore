@@ -1,0 +1,19 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# audit reports (local working artifacts)
+*-audit/
+
+# logs & temp files
+*.log
+*.err
+_deprecated*
+_cleanup.cjs
+_fix_images.cjs
+_fix_images.py
+_debug*.png
+desktop*.png

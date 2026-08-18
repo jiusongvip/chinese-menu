@@ -1,0 +1,107 @@
+---
+import { cuisines } from "../data/dishes";
+
+const extras: Record<string, { detail: string; techniques: string; tip: string }> = {
+  Sichuan: {
+    detail:
+      "The most famous Chinese cuisine abroad, built on má (numbing Sichuan peppercorn) and là (chili heat) — together called málà. Born in the humid Sichuan basin, its bold flavors come from chili bean paste (doubanjiang), garlic, ginger and fermented ingredients. It is fiery, tingly and deeply savory.",
+    techniques: "Dry-frying (干煸) · water-boiling (水煮) · twice-cooking (回锅)",
+    tip: "Ask for 'wēi là' (mild spice) or 'bú yào là' (no spice) if you are not used to heat. Most Sichuan dishes can be dialed down.",
+  },
+  Cantonese: {
+    detail:
+      "Guangdong's cuisine prizes freshness above all — an old saying goes 'eat in Guangzhou'. Flavors are light and clean, using steaming, poaching and quick stir-frying to preserve the natural taste of ingredients. Dim sum is its most famous ritual, served from early morning.",
+    techniques: "Steaming (蒸) · poaching (白灼) · roasting (烧腊)",
+    tip: "Cantonese food is the safest starting point — mostly mild and naturally light, with plenty of seafood and vegetables.",
+  },
+  Shandong: {
+    detail:
+      "One of China's oldest and most influential cuisines, from the coastal north. Salty, savory and seafood-forward, it prizes rich broths, scallions and precise knife work. Many banquet dishes across northern China trace their roots back to Shandong.",
+    techniques: "Quick-frying (爆) · braising · broth-building",
+    tip: "Expect generous portions and savory depth. Dumplings here are a meal on their own, not a side.",
+  },
+  Jiangsu: {
+    detail:
+      "The refined cuisine of the lower Yangtze, known for soft textures, gentle sweetness and knife skills that turn vegetables into art. Jiangsu dishes are subtle — the opposite of Sichuan's fire — and often sweet-savory, like red-braised pork.",
+    techniques: "Red-braising (红烧) · slow-stewing · fine slicing",
+    tip: "If you like delicate, slightly sweet flavors, Jiangsu is your region. Xiaolongbao actually began here before Shanghai made it famous.",
+  },
+  Hunan: {
+    detail:
+      "Hunan is Sichuan's spicier cousin — bright, sour and very hot, using fresh chilies rather than dried ones and leaning on smoked and cured ingredients. It is the home province of Mao Zedong, whose love of red-braised pork made the dish famous.",
+    techniques: "Smoking · pickling · chili stir-frying",
+    tip: "Hunan heat is more direct than Sichuan's numbing spice. Ask for less chili with 'shǎo fàng làjiāo'.",
+  },
+  Zhejiang: {
+    detail:
+      "The elegant, clean cuisine of Hangzhou and the Yangtze Delta. Fresh, light and slightly sweet, it favors freshwater fish, bamboo shoots and rice wine, with a famous 'West Lake' aesthetic of delicate, beautiful presentation.",
+    techniques: "Quick-steaming · wine-braising · gentle simmering",
+    tip: "Dongpo pork is the star here — rich but not spicy, an easy crowd-pleaser for beginners.",
+  },
+  Fujian: {
+    detail:
+      "Fujian's cooking is broth-obsessed and umami-rich, the birthplace of 'Buddha Jumps Over the Wall' and countless seafood soups. It also invented shacha (satay) sauce and is the homeland of oolong tea.",
+    techniques: "Soup-building · slow-simmering · seafood handling",
+    tip: "Order a broth or soup dish — that is where Fujian cooking genuinely shines.",
+  },
+  Anhui: {
+    detail:
+      "The rustic, mountain cuisine of Anhui, built on wild herbs, cured ham and long braising over low heat. It is earthier and less sweet than its neighbors, famous for fermented and 'stinky' specialties that are more gentle than they smell.",
+    techniques: "Long braising · smoking · fermenting",
+    tip: "Anhui specialties are an acquired taste. Try stinky mandarin fish with an open mind — the aroma is stronger than the flavor.",
+  },
+};
+---
+
+<section id="cuisines" class="border-y border-line bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+    <div class="max-w-2xl">
+      <h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
+        The eight great cuisines.
+      </h2>
+      <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+        Chinese food is not one menu but eight regional schools. Spot the character on a
+        sign or menu and you already know the flavors to expect — expand each one to learn
+        its story, techniques and what to order.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-5 sm:grid-cols-2">
+      {cuisines.map((cuisine) => {
+        const extra = extras[cuisine.name];
+        return (
+          <details class="group border border-line bg-white p-6">
+            <summary class="flex cursor-pointer list-none items-baseline gap-3">
+              <span class="text-3xl font-semibold leading-none text-accent-600">
+                {cuisine.character}
+              </span>
+              <div>
+                <h3 class="text-lg font-semibold">{cuisine.name}</h3>
+                <p class="text-sm text-muted">{cuisine.pinyin} · {cuisine.taste}</p>
+              </div>
+              <span class="ml-auto text-2xl font-light text-accent-600 group-open:hidden">+</span>
+              <span class="ml-auto hidden text-2xl font-light text-accent-600 group-open:inline">−</span>
+            </summary>
+
+            <div class="mt-4 space-y-3 border-t border-line pt-4">
+              <p class="text-sm leading-relaxed text-muted">{extra.detail}</p>
+              <p class="text-sm text-muted">
+                <span class="font-medium text-ink">Techniques:</span> {extra.techniques}
+              </p>
+              <p class="text-sm">
+                <span class="text-muted">Cities:</span> {cuisine.city}
+              </p>
+              <p class="text-sm">
+                <span class="text-muted">Try:</span> {cuisine.dishes}
+              </p>
+              <div class="rounded border border-line bg-paper p-3">
+                <p class="text-sm font-semibold text-accent-600">Ordering tip</p>
+                <p class="mt-1 text-sm leading-relaxed text-muted">{extra.tip}</p>
+              </div>
+            </div>
+          </details>
+        );
+      })}
+    </div>
+  </div>
+</section>

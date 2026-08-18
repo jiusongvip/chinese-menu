@@ -1,0 +1,50 @@
+---
+const heroImage = "/images/hero-round-table.webp";
+---
+
+<section class="mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-20 sm:px-6 lg:min-h-[calc(100dvh-4rem)] lg:grid-cols-[1.04fr_0.96fr] lg:items-center lg:gap-16 lg:px-8 lg:pb-24 lg:pt-20">
+  <div class="max-w-2xl">
+    <p class="text-sm font-medium text-accent-600">Your Chinese menu</p>
+    <h1 class="mt-4 text-5xl font-semibold tracking-tighter leading-[1.02] sm:text-6xl lg:text-7xl">
+      Read any Chinese menu, order with confidence.
+    </h1>
+    <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted md:text-xl">
+      One menu at a time — read the dish, know the price, and point with confidence
+      in any Chinese restaurant.
+    </p>
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <a
+        href="/#explorer"
+        class="inline-flex items-center justify-center bg-ink px-6 py-3.5 text-sm font-medium text-white transition-transform active:scale-[0.98]"
+      >
+        Search the menu
+      </a>
+      <a
+        href="/#anatomy"
+        class="inline-flex items-center justify-center border border-line bg-white px-6 py-3.5 text-sm font-medium text-ink transition-colors hover:bg-accent-50"
+      >
+        How to read a menu
+      </a>
+    </div>
+    <div class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
+      <span>Independent picks</span>
+      <span>No sponsored dishes</span>
+      <span>Prices checked quarterly</span>
+    </div>
+  </div>
+
+  <div class="relative">
+    <img
+      src={heroImage}
+      alt="A round table filled with Chinese dishes"
+      class="aspect-[4/3] w-full border border-line bg-zinc-100 object-cover"
+      width="1080"
+      height="813"
+      fetchpriority="high"
+    />
+    <div class="mt-3 flex items-center justify-between gap-4 text-sm text-muted">
+      <span>Real dishes, real menu words.</span>
+      <span>English + Chinese + pinyin</span>
+    </div>
+  </div>
+</section>

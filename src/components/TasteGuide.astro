@@ -1,0 +1,128 @@
+---
+const tastes = [
+  {
+    zh: "辣",
+    en: "Spicy",
+    note: "辣椒的灼热，川湘的底色 · Chili heat, the Sichuan-Hunan backbone",
+    detail:
+      "Chili heat is the backbone of Sichuan and Hunan cooking, but Chinese spice is not one flavor — dried chilies bring sharp heat, fresh chilies bring bright burn, and chili oil adds a slow, glossy warmth that builds as you eat.",
+    dishes: [
+      { en: "Kung Pao Chicken", zh: "宫保鸡丁", price: "¥28-58" },
+      { en: "Sichuan Boiled Fish", zh: "水煮鱼", price: "¥58-128" },
+      { en: "Twice-Cooked Pork", zh: "回锅肉", price: "¥28-52" },
+    ],
+    tip: "Ask for 'wēi là' (mild) or 'bú yào là' (no spice). Most kitchens can dial the heat down.",
+  },
+  {
+    zh: "麻",
+    en: "Numbing",
+    note: "花椒的酥麻，川菜的灵魂 · Sichuan peppercorn tingle",
+    detail:
+      "Sichuan peppercorn creates a tingling, almost electric numbness — má — that is unique to Chinese cooking. Combined with chili it forms 'málà', the signature of Sichuan and Chongqing, and the feeling fades within seconds.",
+    dishes: [
+      { en: "Mapo Tofu", zh: "麻婆豆腐", price: "¥18-42" },
+      { en: "Fuqi Feipian", zh: "夫妻肺片", price: "¥25-48" },
+      { en: "Dan Dan Noodles", zh: "担担面", price: "¥16-36" },
+    ],
+    tip: "Numbing is milder than it sounds. Pair málà dishes with rice or a mild vegetable to reset your palate.",
+  },
+  {
+    zh: "鲜",
+    en: "Umami",
+    note: "食材本味，粤菜的讲究 · Fresh savor, the Cantonese ideal",
+    detail:
+      "The elusive 'delicious freshness' at the heart of Cantonese and Fujian cooking — the savory depth of good broth, fresh seafood and ingredients cooked just enough to keep their natural taste. It is the opposite of heavy sauce.",
+    dishes: [
+      { en: "Steamed Fish", zh: "清蒸鱼", price: "¥68-168" },
+      { en: "White Cut Chicken", zh: "白切鸡", price: "¥35-68" },
+      { en: "Wonton Soup", zh: "云吞汤", price: "¥18-38" },
+    ],
+    tip: "Umami dishes are the safest for beginners — light, fresh and rarely spicy. Order these on day one.",
+  },
+  {
+    zh: "甜",
+    en: "Sweet",
+    note: "糖色的甜，红烧与甜点 · Sweetness in braises and desserts",
+    detail:
+      "Sugar appears not only in desserts but in savory dishes across Jiangsu, Zhejiang and Shanghai, where a little sweetness balances soy and vinegar — think red-braised pork, sweet-and-sour sauces and lacquered roast meats.",
+    dishes: [
+      { en: "Sweet and Sour Pork", zh: "咕噜肉", price: "¥28-58" },
+      { en: "Braised Pork Belly", zh: "红烧肉", price: "¥32-58" },
+      { en: "Egg Tart", zh: "蛋挞", price: "¥6-15" },
+    ],
+    tip: "If you dislike sweet meat, ask 'bú yào tài tián' (not too sweet). Northern cuisines are less sweet than southern ones.",
+  },
+  {
+    zh: "清",
+    en: "Mild",
+    note: "清蒸清炒，肠胃友好 · Clean and light, easy on the stomach",
+    detail:
+      "Clean, light flavors built on steaming, poaching and gentle broth — the comfort zone of Cantonese and Zhejiang cooking. Ideal for sensitive stomachs, jet-lagged travelers and anyone easing into Chinese food.",
+    dishes: [
+      { en: "Stir-Fried Greens", zh: "清炒时蔬", price: "¥15-32" },
+      { en: "Congee", zh: "白粥", price: "¥8-22" },
+      { en: "White Cut Chicken", zh: "白切鸡", price: "¥35-68" },
+    ],
+    tip: "Choose 'qīng dàn' (light) dishes when you want something easy. Steamed fish and congee are the classics.",
+  },
+  {
+    zh: "香",
+    en: "Fragrant",
+    note: "烟火气里的浓郁香口 · The aroma of wok hei and roast",
+    detail:
+      "The aroma of 'wok hei' — the smoky, charred perfume of food stir-fried over a very hot flame — plus roasted meats and cumin-scented skewers. It is the smell that reaches you before the taste does.",
+    dishes: [
+      { en: "Peking Duck", zh: "北京烤鸭", price: "¥168-398" },
+      { en: "Char Siu", zh: "叉烧", price: "¥28-68" },
+      { en: "Lamb Skewers", zh: "羊肉串", price: "¥5-12" },
+    ],
+    tip: "Fragrant, wok-fried dishes are best eaten immediately, straight from the kitchen while the aroma is at its peak.",
+  },
+];
+---
+
+<section id="taste" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+  <div class="max-w-2xl">
+    <h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
+      Order by taste, not by guessing.
+    </h2>
+    <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+      Six flavors cover almost the whole of Chinese cooking. Pick the one you want, learn
+      what it means, and order straight from its short list.
+    </p>
+  </div>
+
+  <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+    {tastes.map((taste) => (
+      <details class="group border border-line bg-white p-6">
+        <summary class="flex cursor-pointer list-none items-baseline gap-3">
+          <span class="text-3xl font-semibold leading-none text-accent-600">{taste.zh}</span>
+          <div>
+            <h3 class="text-lg font-semibold">{taste.en}</h3>
+            <p class="mt-0.5 text-sm text-muted">{taste.note}</p>
+          </div>
+          <span class="ml-auto text-2xl font-light text-accent-600 group-open:hidden">+</span>
+          <span class="ml-auto hidden text-2xl font-light text-accent-600 group-open:inline">−</span>
+        </summary>
+
+        <div class="mt-4 border-t border-line pt-4">
+          <p class="text-sm leading-relaxed text-muted">{taste.detail}</p>
+          <div class="mt-4 space-y-3">
+            {taste.dishes.map((dish) => (
+              <div class="flex items-baseline gap-2 text-sm">
+                <span class="font-medium">{dish.en}</span>
+                <span class="text-muted">{dish.zh}</span>
+                <span class="flex-1 border-b border-dotted border-line"></span>
+                <span class="shrink-0 font-semibold text-accent-600">{dish.price}</span>
+              </div>
+            ))}
+          </div>
+          <div class="mt-4 rounded border border-line bg-paper p-3">
+            <p class="text-sm font-semibold text-accent-600">Ordering tip</p>
+            <p class="mt-1 text-sm leading-relaxed text-muted">{taste.tip}</p>
+          </div>
+        </div>
+      </details>
+    ))}
+  </div>
+</section>

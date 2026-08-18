@@ -1,0 +1,106 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import CityPicker from "../components/CityPicker.tsx";
+import MenuExplorer from "../components/MenuExplorer.tsx";
+import TravelerTypes from "../components/TravelerTypes.astro";
+import MenuAnatomy from "../components/MenuAnatomy.astro";
+import CityMenus from "../components/CityMenus.astro";
+import Cuisines from "../components/Cuisines.astro";
+import TasteGuide from "../components/TasteGuide.astro";
+import AtTheTable from "../components/AtTheTable.astro";
+import WhyTrust from "../components/WhyTrust.astro";
+import FAQ from "../components/FAQ.astro";
+import { dishes } from "../data/dishes";
+
+const title = "Chinese Menu: Read It, Order It, Eat It";
+
+const siteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Chinese Menu",
+  "url": Astro.site!.href,
+};
+
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Signature Chinese dishes for travelers",
+  "itemListElement": dishes.map((dish, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": dish.englishName,
+    "alternateName": `${dish.chineseName} ${dish.pinyin}`,
+    "image": new URL(dish.image, Astro.site!).href,
+    "description": dish.description,
+  })),
+};
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description":
+    "Learn the map of a Chinese menu, browse six city signature menus, and order with confidence — dish names, prices and phrases for your China trip.",
+  "author": { "@type": "Person", "name": "Chinese Menu Editorial Team" },
+  "publisher": { "@type": "Organization", "name": "Chinese Menu" },
+  "reviewedBy": { "@type": "Organization", "name": "Chinese Menu" },
+  "dateModified": "2026-08-18",
+  "mainEntityOfPage": Astro.site!.href,
+};
+
+const webAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Chinese Menu Explorer",
+  "url": Astro.site!.href,
+  "applicationCategory": "TravelApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList":
+    "Search dishes by English, Chinese or pinyin; filter by diet and region; generate a printable point-to-order card",
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ChineseMenu",
+  "url": Astro.site!.href,
+  "description":
+    "A traveler's Chinese menu decoder — browse, translate and order real Chinese dishes.",
+};
+---
+
+<Layout
+  title="Chinese Menu"
+  fullTitle="Chinese Menu: Read It, Order It, Eat It (2026)"
+  description="Learn the map of a Chinese menu, browse six city signature menus, and order with confidence — dish names, prices and phrases for your China trip."
+>
+  <Hero />
+
+  <CityPicker client:load />
+
+  <MenuExplorer client:load />
+
+  <TravelerTypes />
+
+  <MenuAnatomy />
+
+  <CityMenus />
+
+  <Cuisines />
+
+  <TasteGuide />
+
+  <AtTheTable />
+
+  <WhyTrust />
+
+  <FAQ />
+
+  <script type="application/ld+json" set:html={JSON.stringify(siteSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+</Layout>

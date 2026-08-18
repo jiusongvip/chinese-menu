@@ -1,0 +1,158 @@
+---
+const items = [
+  {
+    q: "What is Chinese food?",
+    a: "It is a shared name for a wide set of regional cuisines shaped by geography, climate and migration — from numbing Sichuan to delicate Cantonese.",
+  },
+  {
+    q: "What should a first-time visitor eat in China?",
+    a: "Start with Peking duck, xiaolongbao, mapo tofu, roujiamo, kung pao chicken and wonton soup, then let the city guide your next choices.",
+  },
+  {
+    q: "How much does food cost in China?",
+    a: "Street snacks often cost 8-30 RMB, casual restaurant meals 40-90 RMB per person, and a full Peking duck dinner 120-220 RMB or more.",
+  },
+  {
+    q: "Is Chinese street food safe?",
+    a: "Choose busy stalls with fast turnover and food cooked at high heat, drink bottled water, and carry allergy phrases in Chinese.",
+  },
+  {
+    q: "Can vegetarians eat well in China?",
+    a: "Buddhist restaurants, tofu dishes, vegetable stir-fries, rice noodles and many dim sum items work well. Say 'wǒ shì sù shí zhě' (I am vegetarian) and look for the 'sù' sign.",
+  },
+  {
+    q: "Can I eat gluten-free in China?",
+    a: "It is possible but requires care — soy sauce contains wheat, and noodles, dumplings and buns are everywhere. Order steamed fish, rice, plain vegetables and rice noodles, and show a written 'wú fū zhì' (gluten-free) note. State your allergy clearly, as cross-contamination is common.",
+  },
+  {
+    q: "Is Chinese food halal? Where can I find halal food?",
+    a: "Most Chinese food is not halal, but Xi'an, Ningxia and Xinjiang have strong halal traditions, and most big cities have halal restaurants — look for the green 'qīng zhēn' (清真) sign. There lamb, beef and wheat-based dishes dominate.",
+  },
+  {
+    q: "What are the most common allergens in Chinese food?",
+    a: "Peanuts, soy, wheat, sesame, shellfish and eggs appear constantly, and soy is nearly impossible to avoid. If you have a serious allergy, carry a printed allergy card in Chinese and check with staff before ordering.",
+  },
+  {
+    q: "How do I order food if I do not speak Chinese?",
+    a: "Use the phrase cards, point to a photo on this page, or show the Chinese text to the staff.",
+  },
+  {
+    q: "How do I read a Chinese menu if I cannot read characters?",
+    a: "Look for picture menus, use a translation app camera, or show a dish name from this page to the staff. The menu words cheat sheet above also helps.",
+  },
+  {
+    q: "What is a typical Chinese meal structure?",
+    a: "Meals are shared, not individual. Cold dishes come first, then hot dishes arrive in sequence, then a staple of rice or noodles. Everyone eats from the shared plates. Order one dish per person plus one to share.",
+  },
+  {
+    q: "What is dim sum and how do I order it?",
+    a: "Dim sum is a Cantonese brunch of small steamed, fried and baked plates served from rolling carts or a tick-box menu. Order tea first, then baskets of three to four pieces: har gow, siu mai, char siu bao and egg tarts. Go before noon for the full cart experience.",
+  },
+  {
+    q: "What is hot pot and is it beginner-friendly?",
+    a: "Hot pot is a shared pot of boiling broth where you cook raw ingredients. Order a half-spicy, half-mild 'yuānyāng' pot and dip cooked food in sesame oil and garlic to start safely.",
+  },
+  {
+    q: "What are the eight great Chinese cuisines?",
+    a: "Sichuan, Cantonese, Shandong, Jiangsu, Hunan, Zhejiang, Fujian and Anhui, each tied to a region and its signature flavors.",
+  },
+  {
+    q: "Is Chinese food always spicy?",
+    a: "No. Sichuan and Hunan food is famously hot, but Cantonese, Jiangsu and Shandong dishes are mostly mild or savory.",
+  },
+  {
+    q: "What is the difference between northern and southern Chinese food?",
+    a: "The north is wheat-based (noodles, dumplings, breads) with savory flavors, while the south is rice-based with lighter, fresher dishes and more seafood.",
+  },
+  {
+    q: "What do Chinese people eat for breakfast?",
+    a: "Jianbing crepes, baozi, congee, youtiao, soy milk and noodles are common, often bought from street stalls for 5-15 RMB.",
+  },
+  {
+    q: "How do I pay for food in China?",
+    a: "Almost everywhere accepts WeChat Pay and Alipay by QR code, and both now accept foreign cards. Cash is still legal but increasingly rare — carry a little for small street stalls. Set up Alipay or WeChat Pay with your home card before you arrive.",
+  },
+  {
+    q: "How do I ask for the bill and split it?",
+    a: "Say 'mǎi dān' (the bill) or make a writing gesture with your hand. Splitting is increasingly accepted — ask 'kěyǐ fēnkāi suàn ma?' (can we pay separately?). Tipping is not expected.",
+  },
+  {
+    q: "How do I ask for no MSG or less salt?",
+    a: "Say 'bú yào wèijīng' (no MSG) and 'shǎo fàng yán' (less salt). Most kitchens will happily accommodate both requests.",
+  },
+  {
+    q: "Is tap water safe to drink in China?",
+    a: "No — do not drink tap water. Drink bottled or boiled water, and use bottled water for brushing teeth if you are sensitive. Restaurants serve boiled tea or bottled drinks.",
+  },
+  {
+    q: "What is the best way to find good restaurants in China?",
+    a: "Use Dianping (the Yelp of China), look for busy local restaurants with queues, and avoid places aimed only at tourists near major attractions. Busy street stalls with fast turnover are usually a sign of fresh, safe food.",
+  },
+  {
+    q: "What are the basic chopstick rules?",
+    a: "Do not stick chopsticks upright in rice (it resembles funeral incense), do not point with them, and do not use them to spear food. Rest them on the holder or across your bowl between bites.",
+  },
+  {
+    q: "What is the drinking etiquette at Chinese meals?",
+    a: "'Gānbēi' means bottoms up, not just cheers — be careful. When someone toasts you, lower your glass slightly below theirs as a sign of respect. Politely decline with 'wǒ bù néng hē jiǔ' (I cannot drink).",
+  },
+  {
+    q: "What should a beginner avoid ordering?",
+    a: "Skip offal-heavy dishes (tripe, blood), very spicy málà hot pot, and stinky fermented specialties like stinky tofu or stinky mandarin fish until you are more adventurous. Start with the classics: Peking duck, xiaolongbao, char siu, fried rice.",
+  },
+  {
+    q: "Which food cities are worth a trip on their own?",
+    a: "Beijing, Chengdu, Xi'an and Shanghai each justify a dedicated stop, while Guangzhou and Chongqing reward focused food days.",
+  },
+  {
+    q: "How many days do I need in each food city?",
+    a: "Plan 2-4 days for most cities: 2-3 for Shanghai or Guangzhou, 3-4 for Beijing, and 3-5 for Chengdu.",
+  },
+  {
+    q: "Do I need to tip in China?",
+    a: "No. Tipping is not expected in restaurants or taxis, and some places may politely refuse it.",
+  },
+];
+---
+
+<section id="faq" class="border-t border-line bg-white">
+  <div class="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8 lg:py-24">
+    <div>
+      <h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
+        Quick answers before you travel.
+      </h2>
+      <p class="mt-4 max-w-md text-base leading-relaxed text-muted">
+        The common questions travelers ask before planning a food trip through China —
+        from paying and tipping to allergies, halal and chopsticks.
+      </p>
+    </div>
+
+    <div class="border-t border-line">
+      {items.map((item, index) => (
+        <details class="group border-b border-line py-5" open={index === 0}>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-lg font-medium">
+            {item.q}
+            <span class="text-2xl font-light text-accent-600 group-open:hidden">+</span>
+            <span class="hidden text-2xl font-light text-accent-600 group-open:inline">-</span>
+          </summary>
+          <p class="mt-3 max-w-3xl leading-relaxed text-muted">
+            {item.a}
+          </p>
+        </details>
+      ))}
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": items.map((item) => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a,
+      },
+    })),
+  })} />
+</section>
