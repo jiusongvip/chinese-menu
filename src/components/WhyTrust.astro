@@ -1,4 +1,6 @@
 ---
+import SectionHeader from "./SectionHeader.astro";
+
 const trustPoints = [
   {
     title: "Independent picks",
@@ -57,17 +59,13 @@ const comparison = [
 
 <section id="why-trust" class="border-y border-line bg-white">
   <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
-    <div class="max-w-2xl">
-      <h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
-        Why trust this menu?
-      </h2>
-      <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-        No ads, no sponsored spots, no affiliate tables. Just a menu built for the moment
-        you sit down in front of one you cannot read.
-      </p>
-    </div>
+    <SectionHeader
+      eyebrow="Why us"
+      title="Why trust this menu?"
+      description="No ads, no sponsored spots, no affiliate tables. Just a menu built for the moment you sit down in front of one you cannot read."
+    />
 
-    <div class="mt-12 grid gap-px bg-line sm:grid-cols-2 xl:grid-cols-4">
+    <div class="mt-12 grid gap-px bg-line sm:grid-cols-2 xl:grid-cols-4" data-reveal>
       {trustPoints.map((point) => (
         <div class="bg-white p-6">
           <h3 class="text-lg font-semibold">{point.title}</h3>

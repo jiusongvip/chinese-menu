@@ -1,4 +1,6 @@
 ---
+import SectionHeader from "./SectionHeader.astro";
+
 const travelers = [
   {
     zh: "首次出行",
@@ -70,17 +72,13 @@ const travelers = [
 
 <section id="travelers" class="border-y border-line bg-white">
   <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
-    <div class="max-w-2xl">
-      <h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
-        Who are you? Start here.
-      </h2>
-      <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-        Pick the traveler you are and get a short list that works — no menu decoding
-        required.
-      </p>
-    </div>
+    <SectionHeader
+      eyebrow="Start here"
+      title="Who are you? Start here."
+      description="Pick the traveler you are and get a short list that works — no menu decoding required."
+    />
 
-    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3" data-reveal>
       {travelers.map((traveler) => (
         <article class="flex flex-col border border-line bg-white p-6">
           <div class="flex items-baseline gap-3 border-b border-line pb-4">

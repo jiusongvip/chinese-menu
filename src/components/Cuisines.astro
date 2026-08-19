@@ -1,5 +1,14 @@
 ---
-import { cuisines } from "../data/dishes";
+import SectionHeader from "./SectionHeader.astro";
+import { cuisines, dishes } from "../data/dishes";
+
+// Dish names that exist in the explorer data — these get deep links that
+// pre-fill the search box (/?q=name#explorer). "hotpot" is a display alias
+// for the dish whose English name is "Sichuan Hotpot".
+const linkableDishes = new Set([
+  ...dishes.map((d) => d.englishName.toLowerCase()),
+  "hotpot",
+]);
 
 const extras: Record<string, { detail: string; techniques: string; tip: string }> = {
   Sichuan: {
@@ -55,18 +64,13 @@ const extras: Record<string, { detail: string; techniques: string; tip: string }
 
 <section id="cuisines" class="border-y border-line bg-white">
   <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
-    <div class="max-w-2xl">
-      <h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
-        The eight great cuisines.
-      </h2>
-      <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-        Chinese food is not one menu but eight regional schools. Spot the character on a
-        sign or menu and you already know the flavors to expect — expand each one to learn
-        its story, techniques and what to order.
-      </p>
-    </div>
+    <SectionHeader
+      eyebrow="Regional schools"
+      title="The eight great cuisines."
+      description="Chinese food is not one menu but eight regional schools. Spot the character on a sign or menu and you already know the flavors to expect — expand each one to learn its story, techniques and what to order."
+    />
 
-    <div class="mt-12 grid gap-5 sm:grid-cols-2">
+    <div class="mt-12 grid gap-5 sm:grid-cols-2" data-reveal>
       {cuisines.map((cuisine) => {
         const extra = extras[cuisine.name];
         return (
@@ -89,10 +93,32 @@ const extras: Record<string, { detail: string; techniques: string; tip: string }
                 <span class="font-medium text-ink">Techniques:</span> {extra.techniques}
               </p>
               <p class="text-sm">
-                <span class="text-muted">Cities:</span> {cuisine.city}
+                <span class="text-muted">Cities:</span>{" "}
+                <a href="/#city-menus" class="text-ink underline-offset-2 hover:text-accent-600 hover:underline">
+                  {cuisine.city}
+                </a>
               </p>
               <p class="text-sm">
-                <span class="text-muted">Try:</span> {cuisine.dishes}
+                <span class="text-muted">Try:</span>{" "}
+                {cuisine.dishes.split(", ").map((dishName, i) => {
+                  const key = dishName.toLowerCase();
+                  const linkable = linkableDishes.has(key);
+                  return (
+                    <>
+                      {i > 0 && ", "}
+                      {linkable ? (
+                        <a
+                          href={`/?q=${encodeURIComponent(key)}#explorer`}
+                          class="font-medium text-accent-600 underline-offset-2 hover:underline"
+                        >
+                          {dishName}
+                        </a>
+                      ) : (
+                        <span class="text-ink">{dishName}</span>
+                      )}
+                    </>
+                  );
+                })}
               </p>
               <div class="rounded border border-line bg-paper p-3">
                 <p class="text-sm font-semibold text-accent-600">Ordering tip</p>

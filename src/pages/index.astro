@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
+import Marquee from "../components/Marquee.astro";
+import Stats from "../components/Stats.astro";
 import CityPicker from "../components/CityPicker.tsx";
 import MenuExplorer from "../components/MenuExplorer.tsx";
 import TravelerTypes from "../components/TravelerTypes.astro";
@@ -77,6 +79,10 @@ const organizationSchema = {
   description="Learn the map of a Chinese menu, browse six city signature menus, and order with confidence — dish names, prices and phrases for your China trip."
 >
   <Hero />
+
+  <Marquee />
+
+  <Stats />
 
   <CityPicker client:load />
 

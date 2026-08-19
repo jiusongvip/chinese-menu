@@ -1,4 +1,6 @@
 ---
+import SectionHeader from "./SectionHeader.astro";
+
 const sections = [
   {
     zh: "冷菜",
@@ -88,18 +90,13 @@ const sections = [
 ---
 
 <section id="anatomy" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
-  <div class="max-w-2xl">
-    <h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
-      Every menu follows the same map.
-    </h2>
-    <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-      Six sections, in the same order, in almost every Chinese restaurant. Learn this once
-      and no menu will ever look like a wall of characters again — expand each section to
-      see what hides inside it.
-    </p>
-  </div>
-
-  <div class="mt-12 border-t border-line">
+  <SectionHeader
+    eyebrow="The menu map"
+    title="Every menu follows the same map."
+    description="Six sections, in the same order, in almost every Chinese restaurant. Learn this once and no menu will ever look like a wall of characters again — expand each section to see what hides inside it."
+  />
+  
+  <div class="mt-12 border-t border-line" data-reveal>
     {sections.map((section, index) => (
       <details class="group border-b border-line py-5" open={index === 0}>
         <summary class="flex cursor-pointer list-none items-center gap-4">

@@ -1,4 +1,6 @@
 ---
+import SectionHeader from "./SectionHeader.astro";
+
 const tastes = [
   {
     zh: "辣",
@@ -82,17 +84,13 @@ const tastes = [
 ---
 
 <section id="taste" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
-  <div class="max-w-2xl">
-    <h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
-      Order by taste, not by guessing.
-    </h2>
-    <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-      Six flavors cover almost the whole of Chinese cooking. Pick the one you want, learn
-      what it means, and order straight from its short list.
-    </p>
-  </div>
-
-  <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+  <SectionHeader
+    eyebrow="Flavor guide"
+    title="Order by taste, not by guessing."
+    description="Six flavors cover almost the whole of Chinese cooking. Pick the one you want, learn what it means, and order straight from its short list."
+  />
+  
+  <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3" data-reveal>
     {tastes.map((taste) => (
       <details class="group border border-line bg-white p-6">
         <summary class="flex cursor-pointer list-none items-baseline gap-3">

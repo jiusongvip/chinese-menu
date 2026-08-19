@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   MagnifyingGlass,
   X,
@@ -8,6 +8,9 @@ import {
   Plus,
   Trash,
   SpeakerHigh,
+  Flame,
+  CaretLeft,
+  CaretRight,
 } from "@phosphor-icons/react";
 import { dishes } from "../data/dishes";
 import type { Dish } from "../data/dishes";
@@ -58,13 +61,56 @@ const tagLabel: Record<string, string> = {
   mild: "Mild",
 };
 
+const dietColor: Record<string, string> = {
+  vegetarian: "bg-emerald-50 text-emerald-700 border-emerald-200",
+  vegan: "bg-emerald-100 text-emerald-800 border-emerald-300",
+  halal: "bg-teal-50 text-teal-700 border-teal-200",
+  "gluten-free": "bg-amber-50 text-amber-700 border-amber-200",
+  spicy: "bg-accent-50 text-accent-700 border-accent-200",
+  mild: "bg-zinc-100 text-zinc-600 border-zinc-200",
+};
+
 export default function MenuExplorer() {
   const [query, setQuery] = useState("");
+
+  // SSG pages cannot read ?q= at render time (Astro.url strips the search
+  // string), so deep links from the cuisine cards pre-fill the box after
+  // mount. SSR and client markup stay identical, so no hydration mismatch.
+  useEffect(() => {
+    const q = new URLSearchParams(window.location.search).get("q");
+    if (q) setQuery(q);
+  }, []);
   const [activeTags, setActiveTags] = useState<string[]>([]);
   const [region, setRegion] = useState("all");
   const [category, setCategory] = useState("all");
   const [selected, setSelected] = useState<string[]>([]);
   const [copied, setCopied] = useState(false);
+
+  const featured = useMemo(() => dishes.slice(0, 10), []);
+  const [featuredIndex, setFeaturedIndex] = useState(0);
+  const railRef = useRef<HTMLDivElement>(null);
+
+  function scrollFeatured(direction: 1 | -1) {
+    const rail = railRef.current;
+    if (!rail) return;
+    const card = rail.querySelector<HTMLElement>("[data-featured-card]");
+    const step = card ? card.offsetWidth + 20 : 320;
+    const maxScroll = rail.scrollWidth - rail.clientWidth;
+    const target = Math.min(
+      Math.max(rail.scrollLeft + direction * step, 0),
+      maxScroll,
+    );
+    rail.scrollTo({ left: target, behavior: "smooth" });
+  }
+
+  function syncFeaturedIndex() {
+    const rail = railRef.current;
+    if (!rail) return;
+    const card = rail.querySelector<HTMLElement>("[data-featured-card]");
+    if (!card) return;
+    const index = Math.round(rail.scrollLeft / (card.offsetWidth + 20));
+    setFeaturedIndex(Math.min(index, featured.length - 1));
+  }
 
   const regions = useMemo(
     () => Array.from(new Set(dishes.map((d) => d.region))).sort(),
@@ -174,10 +220,11 @@ export default function MenuExplorer() {
 
   function renderCard(dish: Dish) {
     const isSelected = selected.includes(dish.slug);
+    const isSpicy = (dish.tags as string[]).includes("spicy");
     return (
       <article
         key={dish.slug}
-        className="group flex flex-col overflow-hidden border border-line bg-white"
+        className="group flex h-full flex-col overflow-hidden border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-ink/10"
       >
         <div className="relative aspect-[4/3] overflow-hidden bg-zinc-100">
           <img
@@ -188,11 +235,18 @@ export default function MenuExplorer() {
             height="600"
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.04]"
           />
+          <span className="absolute bottom-3 left-3 bg-accent-600 px-2.5 py-1 text-sm font-semibold text-white shadow-md">
+            {dish.price}
+          </span>
+          {dish.mustTry && (
+            <span className="absolute left-3 top-2 bg-ink px-2 py-1 text-xs font-semibold tracking-wide text-white">
+              ★ Must try
+            </span>
+          )}
           <button
             type="button"
             onClick={() => toggleSelect(dish.slug)}
-            className={`absolute right-2 top-2 inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium transition-colors ${
-              isSelected
+            className={`absolute right-2 top-2 inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-medium transition-colors ${   isSelected
                 ? "bg-accent-600 text-white"
                 : "bg-white/95 text-ink hover:bg-accent-50"
             }`}
@@ -200,13 +254,22 @@ export default function MenuExplorer() {
             {isSelected ? <Check size={14} /> : <Plus size={14} />}
             {isSelected ? "Added" : "Add"}
           </button>
+          {/* big Chinese characters fade up on hover */}
+          <div className="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-ink/70 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <span className="w-full px-4 pb-3 text-right text-3xl font-semibold tracking-tight text-white">
+              {dish.chineseName}
+            </span>
+          </div>
         </div>
         <div className="flex flex-1 flex-col p-4">
           <div className="flex items-baseline justify-between gap-2">
             <h4 className="font-semibold leading-snug">{dish.englishName}</h4>
-            <span className="shrink-0 text-sm font-semibold text-accent-600">
-              {dish.price}
-            </span>
+            {isSpicy && (
+              <span className="inline-flex shrink-0 items-center gap-1 text-xs font-medium text-accent-600" title="Spicy">
+                <Flame size={13} weight="fill" />
+                Spicy
+              </span>
+            )}
           </div>
           <div className="mt-1 flex items-center gap-2">
             <p className="text-sm text-muted">
@@ -225,11 +288,17 @@ export default function MenuExplorer() {
           <p className="mt-2 text-sm leading-relaxed text-muted">
             {dish.description}
           </p>
+          {dish.tip && (
+            <p className="mt-2 flex items-start gap-1.5 text-sm leading-relaxed text-accent-700">
+              <span className="shrink-0 font-semibold">Tip:</span>
+              <span>{dish.tip}</span>
+            </p>
+          )}
           <div className="mt-3 flex flex-wrap gap-1.5">
             {dish.tags.map((t) => (
               <span
                 key={t}
-                className="border border-line px-2 py-0.5 text-xs text-muted"
+                className={`border px-2 py-0.5 text-xs ${dietColor[t] ?? "border-line text-muted"}`}
               >
                 {tagLabel[t] ?? t}
               </span>
@@ -253,7 +322,60 @@ export default function MenuExplorer() {
           </p>
         </div>
 
-        <div className="mt-10">
+        {!isFiltering && (
+          <div className="mt-14" data-reveal>
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p className="text-sm font-medium text-accent-600">Most ordered</p>
+                <h3 className="mt-2 text-2xl font-semibold tracking-tight">
+                  Popular right now
+                </h3>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-sm tabular-nums text-muted">
+                  {String(featuredIndex + 1).padStart(2, "0")} /{" "}
+                  {String(featured.length).padStart(2, "0")}
+                </span>
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => scrollFeatured(-1)}
+                    aria-label="Previous dishes"
+                    className="inline-flex h-10 w-10 items-center justify-center border border-line bg-white text-ink transition-colors hover:border-accent-500 hover:text-accent-600"
+                  >
+                    <CaretLeft size={18} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scrollFeatured(1)}
+                    aria-label="Next dishes"
+                    className="inline-flex h-10 w-10 items-center justify-center border border-line bg-white text-ink transition-colors hover:border-accent-500 hover:text-accent-600"
+                  >
+                    <CaretRight size={18} />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div
+              ref={railRef}
+              onScroll={syncFeaturedIndex}
+              className="mt-6 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-2 scroll-smooth"
+            >
+              {featured.map((dish) => (
+                <div
+                  key={`featured-${dish.slug}`}
+                  data-featured-card
+                  className="w-[280px] shrink-0 snap-start sm:w-[300px]"
+                >
+                  {renderCard(dish)}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <div className="mt-14">
           <div className="relative">
             <MagnifyingGlass
               size={20}

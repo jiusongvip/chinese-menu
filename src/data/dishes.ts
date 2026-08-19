@@ -12,6 +12,10 @@ export type Dish = {
   price: string;
   image: string;
   description: string;
+  /** Traveler-facing ordering tip: how to eat it, who it suits, what to ask for. */
+  tip?: string;
+  /** Signature dishes worth putting on a first-time traveler's shortlist. */
+  mustTry?: boolean;
 };
 
 export const dishes: Dish[] = [
@@ -27,6 +31,8 @@ export const dishes: Dish[] = [
     price: "¥28-58",
     image: "/images/kung-pao-chicken.webp",
     description: "Crispy chicken, crunchy peanuts, and dried chilies tossed in a sweet, sour, and savory glaze — Sichuan's most famous stir-fry.",
+    tip: "Order it with rice — the glossy sauce is made for it.",
+    mustTry: true,
   },
   {
     slug: "mapo-tofu",
@@ -40,6 +46,8 @@ export const dishes: Dish[] = [
     price: "¥18-42",
     image: "/images/mapo-tofu.webp",
     description: "Silken tofu in a fiery, numbing chili-bean sauce with minced pork. The signature 'mala' dish that defines Sichuan cooking.",
+    tip: "Vegetarians: ask for it without minced pork — say 'bú yào ròu'.",
+    mustTry: true,
   },
   {
     slug: "peking-duck",
@@ -53,6 +61,8 @@ export const dishes: Dish[] = [
     price: "¥168-398",
     image: "/images/peking-duck.webp",
     description: "Roast duck with lacquered, crackling skin, carved tableside and wrapped in thin pancakes with scallion and sweet bean sauce.",
+    tip: "A half duck feeds two — pancakes, sauce and scallions come with it.",
+    mustTry: true,
   },
   {
     slug: "xiaolongbao",
@@ -66,6 +76,8 @@ export const dishes: Dish[] = [
     price: "¥12-38",
     image: "/images/xiaolongbao.webp",
     description: "Steamed soup dumplings with thin skins holding hot, savory pork broth. Bite a small hole, sip the soup, then eat the rest.",
+    tip: "Bite a hole, sip the hot broth, then dip in black vinegar with ginger.",
+    mustTry: true,
   },
   {
     slug: "hotpot",
@@ -75,10 +87,12 @@ export const dishes: Dish[] = [
     region: "Sichuan",
     category: "Hotpot",
     ingredients: ["beef", "tripe", "broth", "chili oil"],
-    tags: ["spicy", "halal"],
+    tags: ["spicy"],
     price: "¥88-188 per person",
     image: "/images/hotpot.webp",
     description: "A bubbling pot of spicy chili-oil broth where you cook raw meat, vegetables, and noodles at the table.",
+    tip: "First time? Order a yuānyāng pot — half spicy, half mild.",
+    mustTry: true,
   },
   {
     slug: "char-siu",
@@ -92,6 +106,8 @@ export const dishes: Dish[] = [
     price: "¥28-68",
     image: "/images/char-siu.webp",
     description: "Cantonese barbecued pork with a sticky, sweet honey-soy glaze, served sliced over rice or noodles.",
+    tip: "Try it over rice for a fast, filling, budget-friendly meal.",
+    mustTry: true,
   },
   {
     slug: "beef-chow-fun",
@@ -105,6 +121,7 @@ export const dishes: Dish[] = [
     price: "¥25-58",
     image: "/images/beef-chow-fun.webp",
     description: "Wide, silky rice noodles stir-fried over high heat with beef and bean sprouts in soy sauce — all about the smoky 'wok hei' aroma.",
+    tip: "Eat it straight away — the smoky wok aroma fades fast.",
   },
   {
     slug: "dan-dan-noodles",
@@ -118,6 +135,8 @@ export const dishes: Dish[] = [
     price: "¥16-36",
     image: "/images/dan-dan-noodles.webp",
     description: "Springy wheat noodles under a blanket of chili oil, sesame paste, minced pork, and scallions. Stir before the first bite.",
+    tip: "Stir well before eating — the chili oil settles at the bottom.",
+    mustTry: true,
   },
   {
     slug: "sweet-sour-pork",
@@ -131,6 +150,7 @@ export const dishes: Dish[] = [
     price: "¥28-58",
     image: "/images/sweet-sour-pork.webp",
     description: "Crispy pork chunks tossed in a bright, tangy sweet-and-sour sauce with pineapple and bell pepper.",
+    tip: "Kid-approved and familiar — the safest sweet dish on any menu.",
   },
   {
     slug: "sichuan-boiled-fish",
@@ -144,6 +164,7 @@ export const dishes: Dish[] = [
     price: "¥58-128",
     image: "/images/sichuan-boiled-fish.webp",
     description: "Tender fish fillets poached in a fiery pool of chili oil and Sichuan peppercorn, topped with bean sprouts.",
+    tip: "The fish is tender but the oil is fiery — pace yourself with rice.",
   },
   {
     slug: "wonton-soup",
@@ -157,6 +178,7 @@ export const dishes: Dish[] = [
     price: "¥18-38",
     image: "/images/wonton-soup.webp",
     description: "Delicate pork-and-shrimp dumplings floating in a light, clear chicken broth — a comforting, gentle choice.",
+    tip: "Light and gentle — a good first meal after a long flight.",
   },
   {
     slug: "congee",
@@ -170,6 +192,7 @@ export const dishes: Dish[] = [
     price: "¥8-22",
     image: "/images/congee.webp",
     description: "Slow-cooked rice porridge with a silky, comforting texture. Order it plain or with century egg and pork.",
+    tip: "Easy on the stomach — locals order it for breakfast or after a heavy night.",
   },
   {
     slug: "stir-fried-greens",
@@ -183,6 +206,7 @@ export const dishes: Dish[] = [
     price: "¥15-32",
     image: "/images/stir-fried-greens.webp",
     description: "Seasonal leafy greens flash-fried with garlic. Simple, clean, and naturally vegetarian.",
+    tip: "The reliable vegetable order at any restaurant — order one with every meal.",
   },
   {
     slug: "hot-sour-soup",
@@ -196,6 +220,7 @@ export const dishes: Dish[] = [
     price: "¥12-28",
     image: "/images/hot-sour-soup.webp",
     description: "A peppery, vinegary soup with tofu, mushroom, and egg ribbons — hot from white pepper, sour from vinegar.",
+    tip: "Start with a small spoonful — the heat builds.",
   },
   {
     slug: "scallion-pancakes",
@@ -209,6 +234,7 @@ export const dishes: Dish[] = [
     price: "¥8-20",
     image: "/images/scallion-pancakes.webp",
     description: "Flaky, pan-fried flatbread layered with chopped scallions. Crisp outside, chewy inside.",
+    tip: "Best hot off the griddle — the ultimate street snack.",
   },
   {
     slug: "beef-noodle-soup",
@@ -222,6 +248,7 @@ export const dishes: Dish[] = [
     price: "¥22-48",
     image: "/images/beef-noodle-soup.webp",
     description: "Hand-pulled wheat noodles in a rich beef broth with tender braised beef. Lanzhou's famous version.",
+    tip: "Add chili oil to taste — locals do, a little at a time.",
   },
   {
     slug: "egg-fried-rice",
@@ -235,6 +262,7 @@ export const dishes: Dish[] = [
     price: "¥12-28",
     image: "/images/egg-fried-rice.webp",
     description: "Steamed rice wok-fried with egg, scallion, and a touch of soy sauce — a simple staple.",
+    tip: "The universal backup dish — it never disappoints.",
   },
   {
     slug: "zhajiangmian",
@@ -248,6 +276,7 @@ export const dishes: Dish[] = [
     price: "¥15-32",
     image: "/images/zhajiangmian.webp",
     description: "Thick wheat noodles topped with salty fermented soybean paste, minced pork, and shredded cucumber.",
+    tip: "Mix everything before eating — the paste sits at the bottom.",
   },
   {
     slug: "roujiamo",
@@ -261,6 +290,8 @@ export const dishes: Dish[] = [
     price: "¥8-20",
     image: "/images/roujiamo.webp",
     description: "Braised pork stuffed into a crispy flatbread, often called China's answer to the hamburger.",
+    tip: "Eat it standing at the stall, just like a local.",
+    mustTry: true,
   },
   {
     slug: "steamed-fish",
@@ -274,6 +305,7 @@ export const dishes: Dish[] = [
     price: "¥68-168",
     image: "/images/steamed-fish.webp",
     description: "A whole fresh fish steamed with ginger and scallion, finished with hot oil and soy sauce.",
+    tip: "Order it whole — the ginger-scallion version is the mildest.",
   },
   {
     slug: "yu-xiang-shredded-pork",
@@ -287,6 +319,7 @@ export const dishes: Dish[] = [
     price: "¥22-45",
     image: "/images/yu-xiang-shredded-pork.webp",
     description: "Shredded pork, wood ear, and scallions in a glossy garlic-chili sauce. Despite the name 'fish-fragrant', there is no fish in it.",
+    tip: "Despite the name, no fish is in it — safe to order.",
   },
   {
     slug: "twice-cooked-pork",
@@ -300,6 +333,7 @@ export const dishes: Dish[] = [
     price: "¥28-52",
     image: "/images/twice-cooked-pork.webp",
     description: "Pork belly boiled, sliced, then stir-fried again with leeks and chili bean paste — rich, smoky, and deeply savory.",
+    tip: "Rich and smoky — pair it with a vegetable dish.",
   },
   {
     slug: "suan-cai-yu",
@@ -313,6 +347,7 @@ export const dishes: Dish[] = [
     price: "¥48-98",
     image: "/images/suan-cai-yu.webp",
     description: "Poached fish fillets in a tangy, golden broth of pickled mustard greens and chili. The sour kick cuts through the richness.",
+    tip: "The sour broth is gentle — beginners can handle this one.",
   },
   {
     slug: "maoxuewang",
@@ -326,6 +361,7 @@ export const dishes: Dish[] = [
     price: "¥45-88",
     image: "/images/maoxuewang.webp",
     description: "A fiery Sichuan hot pot of duck blood curd, tripe, and bean sprouts in chili oil. Adventurous and intensely spicy.",
+    tip: "Not for beginners — duck blood and tripe in chili oil.",
   },
   {
     slug: "fuqi-feipian",
@@ -339,6 +375,7 @@ export const dishes: Dish[] = [
     price: "¥25-48",
     image: "/images/fuqi-feipian.webp",
     description: "Thinly sliced beef and beef offal tossed in chili oil and numbing Sichuan peppercorn — boldly seasoned, not for the faint of heart.",
+    tip: "Beef offal in chili oil — for adventurous eaters only.",
   },
   {
     slug: "ants-climbing-a-tree",
@@ -352,6 +389,7 @@ export const dishes: Dish[] = [
     price: "¥15-30",
     image: "/images/ants-climbing-a-tree.webp",
     description: "Glass noodles coated in a spicy soy sauce with minced pork 'ants' clinging to the strands. A playful Sichuan classic.",
+    tip: "Fun name, mild heat — the glass noodles are the star.",
   },
   {
     slug: "braised-pork-belly",
@@ -365,6 +403,7 @@ export const dishes: Dish[] = [
     price: "¥32-58",
     image: "/images/braised-pork-belly.webp",
     description: "Pork belly simmered in soy sauce, rock sugar, and star anise until meltingly tender and lacquered. The dish that made 'red-braised' famous.",
+    tip: "Sweet-savory and rich — one portion is plenty for two.",
   },
   {
     slug: "dongpo-pork",
@@ -378,6 +417,7 @@ export const dishes: Dish[] = [
     price: "¥38-68",
     image: "/images/dongpo-pork.webp",
     description: "Hangzhou's version of braised pork belly, slow-cooked in Shaoxing wine and soy sauce until it collapses under chopsticks.",
+    tip: "Melt-in-the-mouth pork — order greens to balance the richness.",
   },
   {
     slug: "white-cut-chicken",
@@ -391,6 +431,7 @@ export const dishes: Dish[] = [
     price: "¥35-68",
     image: "/images/white-cut-chicken.webp",
     description: "Cantonese poached chicken served cool with a ginger-scallion dipping sauce. Tender, clean-tasting, and naturally gluten-free.",
+    tip: "Clean and mild — pair with the ginger-scallion dip.",
   },
   {
     slug: "har-gow",
@@ -404,6 +445,8 @@ export const dishes: Dish[] = [
     price: "¥15-32",
     image: "/images/har-gow.webp",
     description: "The king of dim sum — whole shrimp wrapped in a translucent rice-flour skin. A good har gow is glossy, plump, and barely holding together.",
+    tip: "The dim sum benchmark — order a basket to share.",
+    mustTry: true,
   },
   {
     slug: "siu-mai",
@@ -417,6 +460,7 @@ export const dishes: Dish[] = [
     price: "¥12-28",
     image: "/images/siu-mai.webp",
     description: "Open-topped pork-and-shrimp dumplings with yellow wheat wrappers, steamed until juicy. A dim sum cart staple.",
+    tip: "A dim sum cart staple — juicy pork and shrimp.",
   },
   {
     slug: "char-siu-bao",
@@ -430,6 +474,7 @@ export const dishes: Dish[] = [
     price: "¥8-18",
     image: "/images/char-siu-bao.webp",
     description: "Fluffy steamed buns filled with sweet, sticky barbecue pork. The white bun splits open to reveal a glossy red center.",
+    tip: "Sweet barbecue pork buns — kids love these.",
   },
   {
     slug: "egg-tart",
@@ -443,6 +488,7 @@ export const dishes: Dish[] = [
     price: "¥6-15",
     image: "/images/egg-tart.webp",
     description: "A buttery pastry shell holding silky egg custard with a caramelized top. Hong Kong's answer to the Portuguese pastel de nata.",
+    tip: "Order fresh from the oven — the custard should be warm.",
   },
   {
     slug: "sheng-jian-bao",
@@ -456,6 +502,8 @@ export const dishes: Dish[] = [
     price: "¥10-24",
     image: "/images/sheng-jian-bao.webp",
     description: "Shanghai's pan-fried pork buns with a golden, crispy bottom and a burst of hot broth inside. Bite carefully.",
+    tip: "Bite carefully — there is hot broth inside.",
+    mustTry: true,
   },
   {
     slug: "guobaorou",
@@ -469,6 +517,7 @@ export const dishes: Dish[] = [
     price: "¥26-48",
     image: "/images/guobaorou.webp",
     description: "Crispy pork slices lacquered in a glossy sweet-and-sour sauce. Northeast China's tangy, crunchy crowd-pleaser.",
+    tip: "Crispy sweet-and-sour pork — the Northeast's crowd-pleaser.",
   },
   {
     slug: "di-san-xian",
@@ -482,6 +531,7 @@ export const dishes: Dish[] = [
     price: "¥15-28",
     image: "/images/di-san-xian.webp",
     description: "Potato, eggplant, and green pepper stir-fried in a savory garlic sauce. A vegetarian favorite from Northeast China.",
+    tip: "The vegetarian's reliable three-vegetable stir-fry.",
   },
   {
     slug: "crossing-the-bridge-noodles",
@@ -495,6 +545,8 @@ export const dishes: Dish[] = [
     price: "¥22-42",
     image: "/images/crossing-the-bridge-noodles.webp",
     description: "Yunnan's famous rice noodle soup — hot chicken broth with raw slices of meat and vegetables added at the table to cook.",
+    tip: "You cook the raw slices in the broth yourself — fun to watch.",
+    mustTry: true,
   },
   {
     slug: "guilin-rice-noodles",
@@ -508,6 +560,7 @@ export const dishes: Dish[] = [
     price: "¥12-25",
     image: "/images/guilin-rice-noodles.webp",
     description: "Rice noodles in broth with beef, pickled beans, and peanuts. Guilin's signature street breakfast, usually under a dollar.",
+    tip: "A cheap, filling breakfast — try the dry-mixed style too.",
   },
   {
     slug: "yangzhou-fried-rice",
@@ -521,6 +574,7 @@ export const dishes: Dish[] = [
     price: "¥18-35",
     image: "/images/yangzhou-fried-rice.webp",
     description: "The 'gold standard' fried rice with shrimp, ham, egg, and peas, each grain separate and golden. Hails from Yangzhou.",
+    tip: "Great for sharing — the 'gold standard' fried rice.",
   },
   {
     slug: "lamb-skewers",
@@ -534,6 +588,8 @@ export const dishes: Dish[] = [
     price: "¥5-12 per stick",
     image: "/images/lamb-skewers.webp",
     description: "Xinjiang-style lamb kebabs dusted with cumin and chili, charred over open flames. Halal-friendly street food found across China.",
+    tip: "Halal-friendly — order by the stick, usually ¥5-12 each.",
+    mustTry: true,
   },
   {
     slug: "bubble-tea",
@@ -547,6 +603,7 @@ export const dishes: Dish[] = [
     price: "¥8-25",
     image: "/images/bubble-tea.webp",
     description: "Sweet milk tea with chewy tapioca pearls, served hot or iced. Taiwan's most famous drink, now on every Chinese street corner.",
+    tip: "Say 'shǎo táng' for less sugar.",
   },
   {
     slug: "soy-milk",
@@ -560,6 +617,7 @@ export const dishes: Dish[] = [
     price: "¥2-6",
     image: "/images/soy-milk.webp",
     description: "Freshly ground soybean milk, served sweet or savory. A breakfast staple often paired with fried dough sticks.",
+    tip: "Try it savory (xián) with fried dough sticks.",
   },
   {
     slug: "sour-plum-drink",
@@ -573,6 +631,7 @@ export const dishes: Dish[] = [
     price: "¥3-8",
     image: "/images/sour-plum-drink.webp",
     description: "A sweet-tart chilled drink made from smoked plums. Beijing's classic summer refresher.",
+    tip: "The classic summer cooler — sweet-tart and ice-cold.",
   },
   {
     slug: "herbal-tea",
@@ -586,6 +645,7 @@ export const dishes: Dish[] = [
     price: "¥5-12",
     image: "/images/herbal-tea.webp",
     description: "A cooling herbal infusion popular in Guangdong. Often drunk to balance the heat of fried and spicy food.",
+    tip: "Slightly bitter — a good digestif after a heavy meal.",
   },
   {
     slug: "fermented-rice-balls",
@@ -599,6 +659,7 @@ export const dishes: Dish[] = [
     price: "¥6-15",
     image: "/images/fermented-rice-balls.webp",
     description: "Soft rice balls in a sweet, lightly fermented rice soup, scented with osmanthus. A gentle, comforting dessert.",
+    tip: "A gentle sweet dessert soup — mild and comforting.",
   },
   {
     slug: "eight-treasure-porridge",
@@ -612,6 +673,7 @@ export const dishes: Dish[] = [
     price: "¥6-15",
     image: "/images/eight-treasure-porridge.webp",
     description: "A sweet rice porridge studded with beans, dates, and lotus seeds. Eaten as dessert, breakfast, or a festive treat.",
+    tip: "Sweet porridge with beans and dates — breakfast or dessert.",
   },
   {
     slug: "mango-sago",
@@ -625,6 +687,7 @@ export const dishes: Dish[] = [
     price: "¥15-32",
     image: "/images/mango-sago.webp",
     description: "Chilled mango purée with sago pearls and coconut milk. Hong Kong's signature sweet-shop dessert.",
+    tip: "A chilled mango dessert — Hong Kong's sweet-shop icon.",
   },
   {
     slug: "zongzi",
@@ -638,6 +701,7 @@ export const dishes: Dish[] = [
     price: "¥5-15",
     image: "/images/zongzi.webp",
     description: "Glutinous rice wrapped in bamboo leaves and steamed, with sweet or savory fillings — the Dragon Boat Festival classic.",
+    tip: "Seasonal — usually only around Dragon Boat Festival (June).",
   },
 ];
 
@@ -729,7 +793,7 @@ export const cuisines = [
     character: "川",
     taste: "numbing, fiery, bold",
     city: "Chengdu, Chongqing",
-    dishes: "Mapo tofu, kung pao chicken, hot pot",
+    dishes: "Mapo tofu, kung pao chicken, hotpot",
   },
   {
     name: "Cantonese",

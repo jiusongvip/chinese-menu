@@ -1,4 +1,5 @@
 ---
+import SectionHeader from "./SectionHeader.astro";
 import { cities } from "../data/dishes";
 
 const signatureDishes: Record<string, { zh: string; en: string; price: string }[]> = {
@@ -87,18 +88,13 @@ const extras: Record<string, { detail: string; order: string; diet: string }> = 
 ---
 
 <section id="city-menus" class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
-  <div class="max-w-2xl">
-    <h2 class="text-3xl font-semibold tracking-tight md:text-5xl">
-      Six cities, six signature menus.
-    </h2>
-    <p class="mt-4 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-      Think of each city as a restaurant with a menu of its own. Order the bold items,
-      and you have tasted the place — plus where to find them, what to budget, and how to
-      order like someone who knows.
-    </p>
-  </div>
-
-  <div class="mt-10 overflow-x-auto border border-line bg-white">
+  <SectionHeader
+    eyebrow="City menus"
+    title="Six cities, six signature menus."
+    description="Think of each city as a restaurant with a menu of its own. Order the bold items, and you have tasted the place — plus where to find them, what to budget, and how to order like someone who knows."
+  />
+  
+  <div class="mt-10 overflow-x-auto border border-line bg-white" data-reveal>
     <table class="w-full min-w-[640px] text-left text-sm">
       <thead class="bg-paper text-muted">
         <tr>
