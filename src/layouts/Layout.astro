@@ -9,11 +9,17 @@ interface Props {
   fullTitle?: string;
   ogImage?: string;
   noindex?: boolean;
+  /** 404 pages should not emit a canonical tag. */
+  noCanonical?: boolean;
 }
 
-const { title, description, fullTitle, ogImage, noindex } = Astro.props;
+const { title, description, fullTitle, ogImage, noindex, noCanonical } = Astro.props;
 const displayTitle = fullTitle || title;
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href.replace(/\/$/, "");
+// trailingSlash: "always" — inner pages keep the trailing slash;
+// the homepage is the single exception (root domain, no slash).
+const isHome = Astro.url.pathname === "/";
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
+const finalCanonical = isHome ? canonicalUrl.replace(/\/$/, "") : canonicalUrl;
 const resolvedOgImage = ogImage || new URL("/images/og-image.webp", Astro.site).href;
 ---
 
@@ -26,7 +32,7 @@ const resolvedOgImage = ogImage || new URL("/images/og-image.webp", Astro.site).
     <meta name="theme-color" content="#c53f2c" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="canonical" href={canonicalUrl} />
+    {!noCanonical && <link rel="canonical" href={finalCanonical} />}
     {!noindex ? <meta name="robots" content="index, follow" /> : <meta name="robots" content="noindex, follow" />}
 
     <title>{displayTitle}</title>
@@ -34,7 +40,7 @@ const resolvedOgImage = ogImage || new URL("/images/og-image.webp", Astro.site).
     <meta property="og:title" content={displayTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalUrl} />
+    {!noCanonical && <meta property="og:url" content={finalCanonical} />}
     <meta property="og:image" content={resolvedOgImage} />
     <meta property="og:image:alt" content={title} />
     <meta name="twitter:card" content="summary_large_image" />

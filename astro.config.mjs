@@ -4,8 +4,8 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://chinese-menu.com",
-  trailingSlash: "never",
+  site: "https://www.chinese-menu.com",
+  trailingSlash: "always",
   integrations: [
     react(),
     sitemap({

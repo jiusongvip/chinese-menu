@@ -4,13 +4,13 @@ A traveler's Chinese menu decoder — browse, translate and order real Chinese d
 
 ## Core sections
 
-- Menu map (six menu sections in order): https://chinese-menu.com/#anatomy
-- Dish explorer (48 signature dishes): https://chinese-menu.com/#explorer
-- City menus (6 cities): https://chinese-menu.com/#city-menus
-- The eight great cuisines: https://chinese-menu.com/#cuisines
-- Taste guide (six flavors): https://chinese-menu.com/#taste
-- At the table (etiquette and phrases): https://chinese-menu.com/#at-the-table
-- FAQ (28 traveler questions): https://chinese-menu.com/#faq
+- Menu map (six menu sections in order): https://www.chinese-menu.com/#anatomy
+- Dish explorer (48 signature dishes): https://www.chinese-menu.com/#explorer
+- City menus (6 cities): https://www.chinese-menu.com/#city-menus
+- The eight great cuisines: https://www.chinese-menu.com/#cuisines
+- Taste guide (six flavors): https://www.chinese-menu.com/#taste
+- At the table (etiquette and phrases): https://www.chinese-menu.com/#at-the-table
+- FAQ (28 traveler questions): https://www.chinese-menu.com/#faq
 
 ## Data
 
