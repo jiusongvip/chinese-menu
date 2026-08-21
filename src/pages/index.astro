@@ -13,15 +13,28 @@ import TasteGuide from "../components/TasteGuide.astro";
 import AtTheTable from "../components/AtTheTable.astro";
 import WhyTrust from "../components/WhyTrust.astro";
 import FAQ from "../components/FAQ.astro";
+import { execSync } from "node:child_process";
 import { dishes } from "../data/dishes";
 
 const title = "Chinese Menu: Read It, Order It, Eat It";
+
+// Canonical homepage URL without trailing slash (root-domain exception, see
+// technology-seo-check rule 2). Schema.org urls must match the canonical form.
+const siteUrl = Astro.site!.href.replace(/\/$/, "");
+
+// Truthful last-modified for the Article schema: the latest commit date, so
+// content changes update it automatically. Falls back to the build date when
+// the repository is not available (e.g. zip uploads).
+let dateModified = new Date().toISOString().slice(0, 10);
+try {
+  dateModified = execSync("git log -1 --format=%cd --date=short", { encoding: "utf8" }).trim();
+} catch {}
 
 const siteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Chinese Menu",
-  "url": Astro.site!.href,
+  "url": siteUrl,
 };
 
 const itemListSchema = {
@@ -47,15 +60,15 @@ const articleSchema = {
   "author": { "@type": "Person", "name": "Chinese Menu Editorial Team" },
   "publisher": { "@type": "Organization", "name": "Chinese Menu" },
   "reviewedBy": { "@type": "Organization", "name": "Chinese Menu" },
-  "dateModified": "2026-08-18",
-  "mainEntityOfPage": Astro.site!.href,
+  "dateModified": dateModified,
+  "mainEntityOfPage": siteUrl,
 };
 
 const webAppSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Chinese Menu Explorer",
-  "url": Astro.site!.href,
+  "url": siteUrl,
   "applicationCategory": "TravelApplication",
   "operatingSystem": "Any",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -67,7 +80,7 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "ChineseMenu",
-  "url": Astro.site!.href,
+  "url": siteUrl,
   "description":
     "A traveler's Chinese menu decoder — browse, translate and order real Chinese dishes.",
 };
