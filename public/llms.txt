@@ -1,16 +1,16 @@
-# Chinese Menu Decoder
+﻿# Chinese Menu Decoder
 
-A traveler's Chinese menu decoder — browse, translate and order real Chinese dishes with English names, Chinese characters, pinyin and price ranges.
+A traveler's Chinese menu decoder 鈥?browse, translate and order real Chinese dishes with English names, Chinese characters, pinyin and price ranges.
 
 ## Core sections
 
-- Menu map (six menu sections in order): https://www.chinese-menu.com/#anatomy
-- Dish explorer (48 signature dishes): https://www.chinese-menu.com/#explorer
-- City menus (6 cities): https://www.chinese-menu.com/#city-menus
-- The eight great cuisines: https://www.chinese-menu.com/#cuisines
-- Taste guide (six flavors): https://www.chinese-menu.com/#taste
-- At the table (etiquette and phrases): https://www.chinese-menu.com/#at-the-table
-- FAQ (28 traveler questions): https://www.chinese-menu.com/#faq
+- Menu map (six menu sections in order): https://www.chinese-menus.com/#anatomy
+- Dish explorer (48 signature dishes): https://www.chinese-menus.com/#explorer
+- City menus (6 cities): https://www.chinese-menus.com/#city-menus
+- The eight great cuisines: https://www.chinese-menus.com/#cuisines
+- Taste guide (six flavors): https://www.chinese-menus.com/#taste
+- At the table (etiquette and phrases): https://www.chinese-menus.com/#at-the-table
+- FAQ (28 traveler questions): https://www.chinese-menus.com/#faq
 
 ## Data
 

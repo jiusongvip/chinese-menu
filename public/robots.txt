@@ -1,4 +1,4 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
-Sitemap: https://www.chinese-menu.com/sitemap-index.xml
+Sitemap: https://www.chinese-menus.com/sitemap-index.xml
