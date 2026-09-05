@@ -45,6 +45,13 @@ const resolvedOgImage = ogImage || new URL("/images/og-image.webp", Astro.site).
     <meta name="theme-color" content="#c53f2c" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
+    <!-- Preload the LCP hero image so it starts fetching during HTML parse -->
+    <link
+      rel="preload"
+      as="image"
+      href="/images/hero-round-table.webp"
+      fetchpriority="high"
+    />
     {!noCanonical && <link rel="canonical" href={finalCanonical} />}
     {!noindex ? <meta name="robots" content="index, follow" /> : <meta name="robots" content="noindex, follow" />}
 
@@ -62,7 +69,7 @@ const resolvedOgImage = ogImage || new URL("/images/og-image.webp", Astro.site).
     <meta name="twitter:image" content={resolvedOgImage} />
   </head>
   <body class="min-h-[100dvh]">
-    <Nav client:load />
+    <Nav client:idle />
     <slot />
     <Footer />
 

@@ -6,6 +6,10 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://www.chinese-menus.com",
   trailingSlash: "always",
+  build: {
+    // Inline the small bundled CSS so it stops render-blocking the critical path.
+    inlineStylesheets: "always",
+  },
   integrations: [
     react(),
     sitemap({
