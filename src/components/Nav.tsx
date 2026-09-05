@@ -4,10 +4,13 @@ import { ArrowRight, List, X } from "@phosphor-icons/react";
 const links = [
   { href: "/#city-menus", label: "City menus" },
   { href: "/#explorer", label: "Dishes" },
-  { href: "/#cuisines", label: "Cuisines" },
+  { href: "/cuisines/", label: "Cuisines" },
   { href: "/#taste", label: "Tastes" },
   { href: "/#at-the-table", label: "At the table" },
   { href: "/#faq", label: "FAQ" },
+  { href: "/about/", label: "About" },
+  { href: "/contact/", label: "Contact" },
+  { href: "/terms/", label: "Terms" },
 ];
 
 export default function Nav() {

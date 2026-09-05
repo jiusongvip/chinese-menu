@@ -8,7 +8,6 @@ import MenuExplorer from "../components/MenuExplorer.tsx";
 import TravelerTypes from "../components/TravelerTypes.astro";
 import MenuAnatomy from "../components/MenuAnatomy.astro";
 import CityMenus from "../components/CityMenus.astro";
-import Cuisines from "../components/Cuisines.astro";
 import TasteGuide from "../components/TasteGuide.astro";
 import AtTheTable from "../components/AtTheTable.astro";
 import WhyTrust from "../components/WhyTrust.astro";
@@ -120,7 +119,29 @@ const organizationSchema = {
 
   <CityMenus />
 
-  <Cuisines />
+  <section id="cuisines" class="border-y border-line bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+      <div class="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-12">
+        <div class="max-w-2xl">
+          <p class="text-sm font-medium text-accent-600">Regional schools</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight md:text-5xl">
+            The eight great cuisines.
+          </h2>
+        </div>
+        <p class="max-w-md text-base leading-relaxed text-muted md:text-lg">
+          Chinese food is not one menu but eight regional schools. Spot the
+          character on a sign or menu and you already know the flavors to expect.
+        </p>
+      </div>
+      <a
+        href="/cuisines/"
+        class="mt-8 inline-flex items-center gap-2 bg-ink px-5 py-3 text-sm font-medium text-white transition-transform active:scale-[0.98]"
+      >
+        Explore all eight cuisines
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
 
   <TasteGuide />
 
