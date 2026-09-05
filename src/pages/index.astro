@@ -12,9 +12,17 @@ import Cuisines from "../components/Cuisines.astro";
 import TasteGuide from "../components/TasteGuide.astro";
 import AtTheTable from "../components/AtTheTable.astro";
 import WhyTrust from "../components/WhyTrust.astro";
-import FAQ from "../components/FAQ.astro";
 import { execSync } from "node:child_process";
 import { dishes } from "../data/dishes";
+
+const faqTeaser = [
+  { q: "How much does food cost in China?", a: "Street snacks 8-30 RMB, casual meals 40-90 RMB per person, and a Peking duck dinner 120-220 RMB or more." },
+  { q: "How do I order if I don't speak Chinese?", a: "Use the phrase cards, point to a photo on this page, or show the Chinese dish name to the staff." },
+  { q: "Is Chinese street food safe?", a: "Choose busy stalls with fast turnover and high-heat cooking, drink bottled water, and carry allergy phrases in Chinese." },
+  { q: "What are the eight great Chinese cuisines?", a: "Sichuan, Cantonese, Shandong, Jiangsu, Hunan, Zhejiang, Fujian and Anhui — each tied to a region and its signature flavors." },
+  { q: "Do I need to tip in China?", a: "No. Tipping is not expected in restaurants or taxis, and some places may politely refuse it." },
+  { q: "Is tap water safe to drink?", a: "No — drink bottled or boiled water, and use bottled water for brushing teeth if you are sensitive." },
+];
 
 const title = "Chinese Menu: Read It, Order It, Eat It";
 
@@ -83,6 +91,11 @@ const organizationSchema = {
   "url": siteUrl,
   "description":
     "A traveler's Chinese menu decoder — browse, translate and order real Chinese dishes.",
+  "sameAs": [
+    "https://github.com/jiusongvip",
+    "https://x.com/chinesemenus",
+    "https://www.linkedin.com/company/chinese-menu",
+  ],
 };
 ---
 
@@ -115,7 +128,41 @@ const organizationSchema = {
 
   <WhyTrust />
 
-  <FAQ />
+  <section id="faq" class="border-t border-line bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-24">
+      <div class="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end lg:gap-12">
+        <div class="max-w-2xl">
+          <p class="text-sm font-medium text-accent-600">FAQ</p>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight md:text-5xl">
+            Quick answers before you travel.
+          </h2>
+        </div>
+        <p class="max-w-md text-base leading-relaxed text-muted md:text-lg">
+          The common questions travelers ask before a food trip through China —
+          from paying and tipping to allergies, halal and chopsticks.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {faqTeaser.map((item) => (
+          <details class="group border border-line bg-paper p-5">
+            <summary class="cursor-pointer list-none text-lg font-medium">
+              {item.q}
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-muted">{item.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <a
+        href="/faq/"
+        class="mt-8 inline-flex items-center gap-2 bg-ink px-5 py-3 text-sm font-medium text-white transition-transform active:scale-[0.98]"
+      >
+        Read all FAQ
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </section>
 
   <script type="application/ld+json" set:html={JSON.stringify(siteSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
