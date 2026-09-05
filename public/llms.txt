@@ -1,16 +1,24 @@
 ﻿# Chinese Menu Decoder
 
-A traveler's Chinese menu decoder 鈥?browse, translate and order real Chinese dishes with English names, Chinese characters, pinyin and price ranges.
+> A traveler's Chinese menu decoder. Browse, translate and order real Chinese dishes with English names, Chinese characters, pinyin and price ranges.
 
-## Core sections
+## Main pages
 
-- Menu map (six menu sections in order): https://www.chinese-menus.com/#anatomy
-- Dish explorer (48 signature dishes): https://www.chinese-menus.com/#explorer
-- City menus (6 cities): https://www.chinese-menus.com/#city-menus
-- The eight great cuisines: https://www.chinese-menus.com/#cuisines
-- Taste guide (six flavors): https://www.chinese-menus.com/#taste
-- At the table (etiquette and phrases): https://www.chinese-menus.com/#at-the-table
-- FAQ (28 traveler questions): https://www.chinese-menus.com/#faq
+- [Home - Chinese Menu Decoder](https://www.chinese-menus.com/): the full single-page decoder with dish explorer, city menus, cuisines, taste guide and FAQ.
+- [About](https://www.chinese-menus.com/about/): who builds the site and how the dish data is sourced.
+- [Contact](https://www.chinese-menus.com/contact/): reach the editorial team.
+- [Terms of Service](https://www.chinese-menus.com/terms/): usage terms.
+- [Privacy Policy](https://www.chinese-menus.com/privacy-policy/): how visitor data is handled.
+
+## Sections on the homepage
+
+- [Menu map](https://www.chinese-menus.com/#anatomy): the six standard menu sections in order.
+- [Dish explorer](https://www.chinese-menus.com/#explorer): 48 signature dishes with names, pinyin, prices and ordering tips.
+- [City menus](https://www.chinese-menus.com/#city-menus): six cities and their signature menus, food streets and budgets.
+- [The eight great cuisines](https://www.chinese-menus.com/#cuisines): regional schools with techniques and tips.
+- [Taste guide](https://www.chinese-menus.com/#taste): six flavors and how to order them.
+- [At the table](https://www.chinese-menus.com/#at-the-table): etiquette, phrases and key characters.
+- [FAQ](https://www.chinese-menus.com/#faq): 28 traveler questions answered.
 
 ## Data
 
